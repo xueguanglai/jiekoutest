@@ -1,0 +1,3 @@
+base_url: https://gatewayuat.jrdaimao.com/easyhome-app-application
+headers:
+  Content-Type: application/json

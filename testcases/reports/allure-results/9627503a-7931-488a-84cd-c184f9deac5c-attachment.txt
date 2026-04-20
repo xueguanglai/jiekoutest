@@ -1,0 +1,14 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-app-application/smartApi/juranApp/login
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NDE4NTE0LCJleHAiOjE4MDc5NTQ1MTR9.CNddMGIA7ALxcoLpwr_WjniShHIVKZrc9yqS13xjd0ehXlJJ26yWTNJs-cwNob3Bc1nQExbNUaquyJ-MO0goPw'}
+INFO     api-test:request_util.py:48 请求体: {
+  "areaCode": "86",
+  "phone": "18888888",
+  "password": "88888888",
+  "sliderCode": "",
+  "signKey": "f4c9f2e1256ac58852ff5d9ceea72b7a",
+  "loginType": 2
+}
+INFO     api-test:request_util.py:89 响应状态码: 200
+INFO     api-test:request_util.py:90 响应耗时(ms): 50
+INFO     api-test:request_util.py:91 响应内容: {"code":"30064","message":"输入有误，请核对信息","data":null,"success":false}

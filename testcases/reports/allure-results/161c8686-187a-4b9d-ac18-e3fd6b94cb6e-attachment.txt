@@ -1,0 +1,9 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/order/queryNonPayOrder
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json', 'platform': 'saas-jr', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc0NDk4MDU1LCJleHAiOjE4MDYwMzQwNTV9.kgQ4vbWapEDsbQgggCQ_TuEZ3iUJcZhPxNsW7qSF2gDORDaxZfxJuCJcwOqk7jK52cCdLdbd9W4SYd5WIHLG_w'}
+INFO     api-test:request_util.py:48 请求体: {
+  "orderId": "9917744980562619973"
+}
+INFO     api-test:request_util.py:88 响应状态码: 200
+INFO     api-test:request_util.py:89 响应耗时(ms): 210
+INFO     api-test:request_util.py:90 响应内容: {"code":"200","data":{"orderId":"9917744980562619973","orderChildrenId":null,"orderPkgId":null,"orderRealMoney":"233","orderTotalMoney":"233","orderDueMoney":"233","payStatus":1,"orderBatchesVOS":[],"allOrderBatchesVOS":null,"miniPayQrcode":null,"isCloseBatch":true,"mixturePaySwitch":true,"orderPaidMoney":"0","paymentWayList":[{"paywayNameCode":41,"paywayNameCodeDesc":"聚分期支付方式","payProductGroupCode":null,"paymentCodeType":7,"paymentWay":null,"paySource":1}],"currencyVO":{"cityStationId":"824358401244008410","currencyId":"824358401244008410","countryNo":"156","countryName":"中国","currencyCode":"CNY","currencyName":"中国人民币元","currencySymbol":"￥","defaultRate":null},"shopName":null,"marketName":null,"easyFlag":null},"message":"操作成功"}

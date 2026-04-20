@@ -1,0 +1,12 @@
+- title: 加购示例
+  method: post
+  url: /api/cart/add
+  body:
+    skuId: "{{skuId}}"
+    quantity: 1
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  skip: true
+  skip_reason: 需要先配置真实商品接口和 skuId 来源

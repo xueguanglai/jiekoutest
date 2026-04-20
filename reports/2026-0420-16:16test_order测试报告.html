@@ -1,0 +1,819 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>2026-0420-16:16test_order测试报告.html</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: #f5f7fb;
+                color: #1f2937;
+            }
+            .container {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 32px 20px 60px;
+            }
+            .hero {
+                background: linear-gradient(135deg, #0f172a, #1d4ed8);
+                color: #fff;
+                border-radius: 16px;
+                padding: 28px;
+                margin-bottom: 24px;
+            }
+            .hero h1 {
+                margin: 0 0 12px 0;
+                font-size: 30px;
+            }
+            .hero p {
+                margin: 0;
+                opacity: 0.9;
+            }
+            .summary {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(120px, 1fr));
+                gap: 12px;
+                margin: 24px 0;
+            }
+            .summary-card {
+                background: #fff;
+                border-radius: 12px;
+                padding: 16px;
+                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            }
+            .summary-card span {
+                display: block;
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+            .summary-card strong {
+                font-size: 28px;
+            }
+            .case-card {
+                background: #fff;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+                border-left: 6px solid #94a3b8;
+                overflow: hidden;
+            }
+            .status-passed { border-left-color: #16a34a; }
+            .status-failed { border-left-color: #dc2626; }
+            .status-skipped { border-left-color: #ca8a04; }
+            .status-error { border-left-color: #7c3aed; }
+            .case-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 20px;
+            }
+            .case-summary::-webkit-details-marker {
+                display: none;
+            }
+            .case-content {
+                padding: 0 20px 20px;
+            }
+            .case-header {
+                display: flex;
+                justify-content: space-between;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            .case-index {
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            .case-header h2 {
+                margin: 0 0 8px 0;
+                font-size: 24px;
+            }
+            .case-nodeid {
+                color: #94a3b8;
+                font-size: 12px;
+                word-break: break-all;
+            }
+            .case-meta {
+                min-width: 160px;
+                background: #f8fafc;
+                border-radius: 12px;
+                padding: 12px;
+            }
+            .case-meta div {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+            .case-meta div:last-child {
+                margin-bottom: 0;
+            }
+            .case-meta span {
+                color: #64748b;
+            }
+            .api-card {
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                margin-top: 14px;
+                background: #fcfdff;
+                overflow: hidden;
+            }
+            .api-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 16px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                align-items: center;
+                background: #f8fafc;
+            }
+            .api-summary::-webkit-details-marker {
+                display: none;
+            }
+            .api-content {
+                padding: 16px;
+                border-top: 1px solid #e2e8f0;
+            }
+            .api-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: #0f172a;
+                margin-right: auto;
+            }
+            .api-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 4px 10px;
+                border-radius: 999px;
+                background: #e2e8f0;
+                color: #334155;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            .kv {
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 6px 0;
+                border-bottom: 1px dashed #e2e8f0;
+            }
+            .kv span {
+                color: #64748b;
+            }
+            .section-title {
+                margin: 14px 0 8px;
+                font-weight: 700;
+                color: #334155;
+            }
+            pre {
+                margin: 0;
+                white-space: pre-wrap;
+                word-break: break-word;
+                background: #0f172a;
+                color: #e2e8f0;
+                padding: 14px;
+                border-radius: 10px;
+                overflow-x: auto;
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            .error-box {
+                margin-top: 12px;
+                background: #fff1f2;
+                border: 1px solid #fecdd3;
+                border-radius: 12px;
+                padding: 14px;
+            }
+            .empty {
+                padding: 16px;
+                color: #64748b;
+                background: #f8fafc;
+                border-radius: 12px;
+                margin-top: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <h1>2026-0420-16:16test_order测试报告.html</h1>
+                <p>生成时间：2026-04-20 16:16:05</p>
+            </div>
+            <div class="summary">
+                <div class="summary-card"><span>总用例</span><strong>6</strong></div>
+                <div class="summary-card"><span>通过</span><strong>0</strong></div>
+                <div class="summary-card"><span>失败</span><strong>6</strong></div>
+                <div class="summary-card"><span>跳过</span><strong>0</strong></div>
+                <div class="summary-card"><span>异常</span><strong>0</strong></div>
+            </div>
+            
+            <details class="case-card status-failed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 1</div>
+                            <h2>查询订单列表</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case0]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>失败</strong></div>
+                            <div><span>耗时</span><strong>0.016 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>self = &lt;testcases.test_order.TestOrder object at 0x106e5dd00&gt;
+http_client = &lt;common.request_util.HttpClient object at 0x106e5e540&gt;
+order_login_token = &#x27;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&#x27;
+case = {&#x27;body&#x27;: {&#x27;marketId&#x27;: &#x27;561863468761264128&#x27;, &#x27;page&#x27;: 1, &#x27;searchText&#x27;: &#x27;&#x27;, &#x27;tagType&#x27;: 2}, &#x27;expected_business_codes&#x27;: [0, 200], &#x27;expected_keys&#x27;: [&#x27;code&#x27;], &#x27;expected_status_code&#x27;: 200, ...}
+
+    @allure.story(&quot;订单相关接口&quot;)
+    @pytest.mark.parametrize(&quot;case&quot;, case_data)
+    def test_order_business(self, http_client, order_login_token, case):
+        if case.get(&quot;skip&quot;):
+            pytest.skip(case.get(&quot;skip_reason&quot;, &quot;当前示例仅作为模板&quot;))
+    
+        response = http_client.send(
+            method=case[&quot;method&quot;],
+            url=case[&quot;url&quot;],
+            headers=case.get(&quot;headers&quot;, {}),
+            json=case[&quot;body&quot;],
+        )
+&gt;       validate_and_extract(response, case)
+
+test_order.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:10: in validate_response
+    assert_status_code(response, case[&quot;expected_status_code&quot;])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response = &lt;Response [404]&gt;, expected_code = 200
+
+    def assert_status_code(response, expected_code=200):
+        actual_code = response.status_code
+&gt;       assert actual_code == expected_code, (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f&quot;状态码断言失败，期望：{expected_code}，实际：{actual_code}&quot;
+        )
+E       AssertionError: 状态码断言失败，期望：200，实际：404
+
+../common/assert_util.py:3: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/saas/orderCenter/getCashierOrderLsit</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 404</span>
+                        <span class="api-badge">12 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/saas/orderCenter/getCashierOrderLsit</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>404</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>12 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;page&quot;: 1,
+  &quot;marketId&quot;: &quot;561863468761264128&quot;,
+  &quot;tagType&quot;: 2,
+  &quot;searchText&quot;: &quot;&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;timestamp&quot;:1776672965091,&quot;path&quot;:&quot;/saas/orderCenter/getCashierOrderLsit&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No matching handler&quot;,&quot;requestId&quot;:&quot;550a8894-180635&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-failed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 2</div>
+                            <h2>查询店铺详情</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case1]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>失败</strong></div>
+                            <div><span>耗时</span><strong>0.012 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>self = &lt;testcases.test_order.TestOrder object at 0x106617410&gt;
+http_client = &lt;common.request_util.HttpClient object at 0x106e5e540&gt;
+order_login_token = &#x27;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&#x27;
+case = {&#x27;body&#x27;: {&#x27;boothId&#x27;: &#x27;1077383802818498560&#x27;, &#x27;shopId&#x27;: &#x27;568237386877833216&#x27;}, &#x27;expected_business_codes&#x27;: [0, 200], &#x27;expected_keys&#x27;: [&#x27;code&#x27;], &#x27;expected_status_code&#x27;: 200, ...}
+
+    @allure.story(&quot;订单相关接口&quot;)
+    @pytest.mark.parametrize(&quot;case&quot;, case_data)
+    def test_order_business(self, http_client, order_login_token, case):
+        if case.get(&quot;skip&quot;):
+            pytest.skip(case.get(&quot;skip_reason&quot;, &quot;当前示例仅作为模板&quot;))
+    
+        response = http_client.send(
+            method=case[&quot;method&quot;],
+            url=case[&quot;url&quot;],
+            headers=case.get(&quot;headers&quot;, {}),
+            json=case[&quot;body&quot;],
+        )
+&gt;       validate_and_extract(response, case)
+
+test_order.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:10: in validate_response
+    assert_status_code(response, case[&quot;expected_status_code&quot;])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response = &lt;Response [404]&gt;, expected_code = 200
+
+    def assert_status_code(response, expected_code=200):
+        actual_code = response.status_code
+&gt;       assert actual_code == expected_code, (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f&quot;状态码断言失败，期望：{expected_code}，实际：{actual_code}&quot;
+        )
+E       AssertionError: 状态码断言失败，期望：200，实际：404
+
+../common/assert_util.py:3: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/saas/getShopDetail</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 404</span>
+                        <span class="api-badge">9 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/saas/getShopDetail</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>404</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>9 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;boothId&quot;: &quot;1077383802818498560&quot;,
+  &quot;shopId&quot;: &quot;568237386877833216&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;timestamp&quot;:1776672965131,&quot;path&quot;:&quot;/saas/getShopDetail&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No matching handler&quot;,&quot;requestId&quot;:&quot;9d59932c-180636&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-failed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 3</div>
+                            <h2>生成订单</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case2]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>失败</strong></div>
+                            <div><span>耗时</span><strong>0.015 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>self = &lt;testcases.test_order.TestOrder object at 0x106e5df10&gt;
+http_client = &lt;common.request_util.HttpClient object at 0x106e5e540&gt;
+order_login_token = &#x27;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&#x27;
+case = {&#x27;body&#x27;: {&#x27;acMemberId&#x27;: &#x27;100000000110&#x27;, &#x27;boothId&#x27;: &#x27;1077383802818498560&#x27;, &#x27;campaignIds&#x27;: [], &#x27;deliveryAddressId&#x27;: &#x27;1145212365764165632&#x27;, ...}, &#x27;expected_business_codes&#x27;: [0, 200], &#x27;expected_keys&#x27;: [&#x27;code&#x27;], &#x27;expected_status_code&#x27;: 200, ...}
+
+    @allure.story(&quot;订单相关接口&quot;)
+    @pytest.mark.parametrize(&quot;case&quot;, case_data)
+    def test_order_business(self, http_client, order_login_token, case):
+        if case.get(&quot;skip&quot;):
+            pytest.skip(case.get(&quot;skip_reason&quot;, &quot;当前示例仅作为模板&quot;))
+    
+        response = http_client.send(
+            method=case[&quot;method&quot;],
+            url=case[&quot;url&quot;],
+            headers=case.get(&quot;headers&quot;, {}),
+            json=case[&quot;body&quot;],
+        )
+&gt;       validate_and_extract(response, case)
+
+test_order.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:10: in validate_response
+    assert_status_code(response, case[&quot;expected_status_code&quot;])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response = &lt;Response [404]&gt;, expected_code = 200
+
+    def assert_status_code(response, expected_code=200):
+        actual_code = response.status_code
+&gt;       assert actual_code == expected_code, (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f&quot;状态码断言失败，期望：{expected_code}，实际：{actual_code}&quot;
+        )
+E       AssertionError: 状态码断言失败，期望：200，实际：404
+
+../common/assert_util.py:3: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/shop/order/addShopOrderBySeller</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 404</span>
+                        <span class="api-badge">12 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/shop/order/addShopOrderBySeller</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>404</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>12 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;deliveryAddressId&quot;: &quot;1145212365764165632&quot;,
+  &quot;shopId&quot;: &quot;568237386877833216&quot;,
+  &quot;deliveryTime&quot;: &quot;2026-03-02&quot;,
+  &quot;deliveryType&quot;: 1,
+  &quot;campaignIds&quot;: [],
+  &quot;boothId&quot;: &quot;1077383802818498560&quot;,
+  &quot;shopGuideId&quot;: &quot;927003290372202496&quot;,
+  &quot;shopGuideName&quot;: &quot;薛广来①号&quot;,
+  &quot;shopGuidePhone&quot;: &quot;18353208862&quot;,
+  &quot;goodsDetailsList&quot;: [
+    {
+      &quot;goodsSkuId&quot;: &quot;1168083525878956032&quot;,
+      &quot;shopId&quot;: &quot;568237386877833216&quot;,
+      &quot;goodsCode&quot;: &quot;00218890101200002&quot;,
+      &quot;goodsId&quot;: &quot;1168083308572065792&quot;,
+      &quot;goodsSkuTitle&quot;: &quot;1000cm*9000ml+湖水秘鲁色惨玛瑙红+长的像蟑螂但是却又不像+我说是保修1年不知道行不行300块&quot;,
+      &quot;goodsTitle&quot;: &quot;我要看看同步供应链的商品的&quot;,
+      &quot;goodsPrice&quot;: &quot;233&quot;,
+      &quot;goodsPic&quot;: &quot;file/easyhome-web-business/1767604421901231_750x750.jpg&quot;,
+      &quot;goodsPicUrl&quot;: &quot;https://osscdnuat.jrdaimao.com/file/easyhome-web-business/1767604421901231_750x750.jpg&quot;,
+      &quot;deliveryTime&quot;: &quot;2026-03-02&quot;,
+      &quot;goodsNum&quot;: 1,
+      &quot;skillGoods&quot;: false,
+      &quot;skillPrice&quot;: null,
+      &quot;skillOrgPrice&quot;: &quot;233&quot;,
+      &quot;equityTagsMap&quot;: null
+    }
+  ],
+  &quot;dmcouponIdSet&quot;: [],
+  &quot;acMemberId&quot;: &quot;100000000110&quot;,
+  &quot;isMember&quot;: 0,
+  &quot;memberId&quot;: &quot;927003290372202496&quot;,
+  &quot;phone&quot;: &quot;18353208862&quot;,
+  &quot;linkedCampaignId&quot;: &quot;&quot;,
+  &quot;useVCards&quot;: [
+    &quot;536037&quot;
+  ],
+  &quot;redCouponIdSet&quot;: [],
+  &quot;registerFlag&quot;: false,
+  &quot;marketId&quot;: &quot;561863468761264128&quot;,
+  &quot;usePump&quot;: false,
+  &quot;orderPumpMoney&quot;: &quot;&quot;,
+  &quot;validateCode&quot;: &quot;&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;timestamp&quot;:1776672965150,&quot;path&quot;:&quot;/shop/order/addShopOrderBySeller&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No matching handler&quot;,&quot;requestId&quot;:&quot;2563735a-180637&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-failed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 4</div>
+                            <h2>选择支付方式</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case3]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>失败</strong></div>
+                            <div><span>耗时</span><strong>0.013 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>self = &lt;testcases.test_order.TestOrder object at 0x106e5e1b0&gt;
+http_client = &lt;common.request_util.HttpClient object at 0x106e5e540&gt;
+order_login_token = &#x27;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&#x27;
+case = {&#x27;body&#x27;: {&#x27;orderId&#x27;: &#x27;{{orderId}}&#x27;}, &#x27;expected_business_codes&#x27;: [0, 200], &#x27;expected_keys&#x27;: [&#x27;code&#x27;], &#x27;expected_status_code&#x27;: 200, ...}
+
+    @allure.story(&quot;订单相关接口&quot;)
+    @pytest.mark.parametrize(&quot;case&quot;, case_data)
+    def test_order_business(self, http_client, order_login_token, case):
+        if case.get(&quot;skip&quot;):
+            pytest.skip(case.get(&quot;skip_reason&quot;, &quot;当前示例仅作为模板&quot;))
+    
+        response = http_client.send(
+            method=case[&quot;method&quot;],
+            url=case[&quot;url&quot;],
+            headers=case.get(&quot;headers&quot;, {}),
+            json=case[&quot;body&quot;],
+        )
+&gt;       validate_and_extract(response, case)
+
+test_order.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:10: in validate_response
+    assert_status_code(response, case[&quot;expected_status_code&quot;])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response = &lt;Response [404]&gt;, expected_code = 200
+
+    def assert_status_code(response, expected_code=200):
+        actual_code = response.status_code
+&gt;       assert actual_code == expected_code, (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f&quot;状态码断言失败，期望：{expected_code}，实际：{actual_code}&quot;
+        )
+E       AssertionError: 状态码断言失败，期望：200，实际：404
+
+../common/assert_util.py:3: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/saas/order/queryNonPayOrder</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 404</span>
+                        <span class="api-badge">10 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/saas/order/queryNonPayOrder</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>404</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>10 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;orderId&quot;: &quot;&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;timestamp&quot;:1776672965169,&quot;path&quot;:&quot;/saas/order/queryNonPayOrder&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No matching handler&quot;,&quot;requestId&quot;:&quot;9d59932c-180638&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-failed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 5</div>
+                            <h2>查询支付详情</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case4]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>失败</strong></div>
+                            <div><span>耗时</span><strong>0.013 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>self = &lt;testcases.test_order.TestOrder object at 0x106e5e090&gt;
+http_client = &lt;common.request_util.HttpClient object at 0x106e5e540&gt;
+order_login_token = &#x27;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&#x27;
+case = {&#x27;body&#x27;: {&#x27;marketId&#x27;: &#x27;561863468761264128&#x27;, &#x27;orderId&#x27;: &#x27;{{orderId}}&#x27;, &#x27;orderType&#x27;: 1, &#x27;searchType&#x27;: &#x27;paymentDetailManager&#x27;}, &#x27;expected_business_codes&#x27;: [0, 200], &#x27;expected_keys&#x27;: [&#x27;code&#x27;], &#x27;expected_status_code&#x27;: 200, ...}
+
+    @allure.story(&quot;订单相关接口&quot;)
+    @pytest.mark.parametrize(&quot;case&quot;, case_data)
+    def test_order_business(self, http_client, order_login_token, case):
+        if case.get(&quot;skip&quot;):
+            pytest.skip(case.get(&quot;skip_reason&quot;, &quot;当前示例仅作为模板&quot;))
+    
+        response = http_client.send(
+            method=case[&quot;method&quot;],
+            url=case[&quot;url&quot;],
+            headers=case.get(&quot;headers&quot;, {}),
+            json=case[&quot;body&quot;],
+        )
+&gt;       validate_and_extract(response, case)
+
+test_order.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:10: in validate_response
+    assert_status_code(response, case[&quot;expected_status_code&quot;])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response = &lt;Response [404]&gt;, expected_code = 200
+
+    def assert_status_code(response, expected_code=200):
+        actual_code = response.status_code
+&gt;       assert actual_code == expected_code, (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f&quot;状态码断言失败，期望：{expected_code}，实际：{actual_code}&quot;
+        )
+E       AssertionError: 状态码断言失败，期望：200，实际：404
+
+../common/assert_util.py:3: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/saas/orderCenter/queryDetail</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 404</span>
+                        <span class="api-badge">10 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/saas/orderCenter/queryDetail</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>404</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>10 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;orderId&quot;: &quot;&quot;,
+  &quot;searchType&quot;: &quot;paymentDetailManager&quot;,
+  &quot;orderType&quot;: 1,
+  &quot;marketId&quot;: &quot;561863468761264128&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;timestamp&quot;:1776672965186,&quot;path&quot;:&quot;/saas/orderCenter/queryDetail&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No matching handler&quot;,&quot;requestId&quot;:&quot;04f89510-180639&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-failed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 6</div>
+                            <h2>支付结果返回</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case5]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>失败</strong></div>
+                            <div><span>耗时</span><strong>0.012 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>self = &lt;testcases.test_order.TestOrder object at 0x106e5e330&gt;
+http_client = &lt;common.request_util.HttpClient object at 0x106e5e540&gt;
+order_login_token = &#x27;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&#x27;
+case = {&#x27;body&#x27;: {&#x27;orderId&#x27;: &#x27;{{orderId}}&#x27;, &#x27;payMoney&#x27;: &#x27;233&#x27;, &#x27;paySource&#x27;: 2, &#x27;paymentWay&#x27;: 10}, &#x27;expected_business_codes&#x27;: [0, 200], &#x27;expected_keys&#x27;: [&#x27;code&#x27;], &#x27;expected_status_code&#x27;: 200, ...}
+
+    @allure.story(&quot;订单相关接口&quot;)
+    @pytest.mark.parametrize(&quot;case&quot;, case_data)
+    def test_order_business(self, http_client, order_login_token, case):
+        if case.get(&quot;skip&quot;):
+            pytest.skip(case.get(&quot;skip_reason&quot;, &quot;当前示例仅作为模板&quot;))
+    
+        response = http_client.send(
+            method=case[&quot;method&quot;],
+            url=case[&quot;url&quot;],
+            headers=case.get(&quot;headers&quot;, {}),
+            json=case[&quot;body&quot;],
+        )
+&gt;       validate_and_extract(response, case)
+
+test_order.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:10: in validate_response
+    assert_status_code(response, case[&quot;expected_status_code&quot;])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response = &lt;Response [404]&gt;, expected_code = 200
+
+    def assert_status_code(response, expected_code=200):
+        actual_code = response.status_code
+&gt;       assert actual_code == expected_code, (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f&quot;状态码断言失败，期望：{expected_code}，实际：{actual_code}&quot;
+        )
+E       AssertionError: 状态码断言失败，期望：200，实际：404
+
+../common/assert_util.py:3: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/saas/payment/cashPayment</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 404</span>
+                        <span class="api-badge">9 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/saas/payment/cashPayment</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>404</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>9 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;payMoney&quot;: &quot;233&quot;,
+  &quot;paymentWay&quot;: 10,
+  &quot;paySource&quot;: 2,
+  &quot;orderId&quot;: &quot;&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;timestamp&quot;:1776672965202,&quot;path&quot;:&quot;/saas/payment/cashPayment&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No matching handler&quot;,&quot;requestId&quot;:&quot;901f9ef0-180640&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+        </div>
+    </body>
+    </html>
+    

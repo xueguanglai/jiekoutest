@@ -1,0 +1,12 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-ops-web-application/smartApi/kunlun/basic/passwordToLogin
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json'}
+INFO     api-test:request_util.py:48 请求体: {
+  "areaCode": "86",
+  "phone": "18350000000",
+  "password": "65a0ec385ca6a0c1e20d1f8270c28303",
+  "loginTarget": "operation"
+}
+INFO     api-test:request_util.py:77 响应状态码: 200
+INFO     api-test:request_util.py:78 响应耗时(ms): 139
+INFO     api-test:request_util.py:79 响应内容: {"code":"200","data":{"userId":"2028709597668769792","userName":"183****0000","areaCode":"86","phone":"18350000000","jwtToken":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3NzQzMzkwNDAsIkNhc19Vc2VyX0lkIjoyMDI4NzA5NTk3NjY4NzY5NzkyLCJwaG9uZSI6IjE4MzUwMDAwMDAwIiwiZXhwIjoxNzc0MzgyMjQwLCJ2ZXJzaW9uIjoyMDM2MzUxNjQ1NDMwOTIzMjY0fQ.WdpnpeUy6OahpLhWlFZFw7PiTThOwsUtsRThXswR4mk5SoDZzABJrhnV5rI97NDtbLNWIJfRHit2DtpRkBfdBQ","bindPhone":false,"unionId":null,"cacheTime":43200,"tokenExpiration":"2026-03-25 03:57:20","refreshToken":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3NzQzMzkwNDAsIkNhc19Vc2VyX0lkIjoyMDI4NzA5NTk3NjY4NzY5NzkyLCJwaG9uZSI6IjE4MzUwMDAwMDAwIiwiZXhwIjoxNzc2OTMxMDQwLCJ0eXBlIjoicmVmcmVzaFRva2VuIn0.Ux0HV7YAEWKM48s9tgGWjXLaZk7qxEMuJgGDr9724b9nlJTA_tceWrLuvySSDd4EmpP7woFQgb_E_h9crpivog"},"message":"操作成功"}

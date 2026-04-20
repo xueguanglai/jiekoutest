@@ -1,0 +1,133 @@
+- title: 查询订单列表
+  method: post
+  url: /saas/orderCenter/getCashierOrderLsit
+  headers:
+    platform: saas-jr
+  body:
+    page: 1
+    marketId: "561863468761264128"
+    tagType: 2
+    searchText: ""
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - code
+
+- title: 查询店铺详情
+  method: post
+  url: /saas/getShopDetail
+  headers:
+    platform: saas-jr
+  body:
+    boothId: "1077383802818498560"
+    shopId: "568237386877833216"
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - code
+
+- title: 生成订单
+  method: post
+  url: /shop/order/addShopOrderBySeller
+  headers:
+    platform: saas-jr
+  body:
+    deliveryAddressId: "1145212365764165632"
+    shopId: "568237386877833216"
+    deliveryTime: "2026-03-02"
+    deliveryType: 1
+    campaignIds: []
+    boothId: "1077383802818498560"
+    shopGuideId: "927003290372202496"
+    shopGuideName: "薛广来①号"
+    shopGuidePhone: "18353208862"
+    goodsDetailsList:
+      - goodsSkuId: "1168083525878956032"
+        shopId: "568237386877833216"
+        goodsCode: "00218890101200002"
+        goodsId: "1168083308572065792"
+        goodsSkuTitle: "1000cm*9000ml+湖水秘鲁色惨玛瑙红+长的像蟑螂但是却又不像+我说是保修1年不知道行不行300块"
+        goodsTitle: "我要看看同步供应链的商品的"
+        goodsPrice: "233"
+        goodsPic: "file/easyhome-web-business/1767604421901231_750x750.jpg"
+        goodsPicUrl: "https://osscdnuat.jrdaimao.com/file/easyhome-web-business/1767604421901231_750x750.jpg"
+        deliveryTime: "2026-03-02"
+        goodsNum: 1
+        skillGoods: false
+        skillPrice: null
+        skillOrgPrice: "233"
+        equityTagsMap: null
+    dmcouponIdSet: []
+    acMemberId: "100000000110"
+    isMember: 0
+    memberId: "927003290372202496"
+    phone: "18353208862"
+    linkedCampaignId: ""
+    useVCards:
+      - "536037"
+    redCouponIdSet: []
+    registerFlag: false
+    marketId: "561863468761264128"
+    usePump: false
+    orderPumpMoney: ""
+    validateCode: ""
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - code
+  extract:
+    orderId: data.orderId
+
+- title: 选择支付方式
+  method: post
+  url: /saas/order/queryNonPayOrder
+  headers:
+    platform: saas-jr
+  body:
+    orderId: "{{orderId}}"
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - code
+
+- title: 查询支付详情
+  method: post
+  url: /saas/orderCenter/queryDetail
+  headers:
+    platform: saas-jr
+  body:
+    orderId: "{{orderId}}"
+    searchType: "paymentDetailManager"
+    orderType: 1
+    marketId: "561863468761264128"
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - code
+
+- title: 支付结果返回
+  method: post
+  url: /saas/payment/cashPayment
+  headers:
+    platform: saas-jr
+  body:
+    payMoney: "233"
+    paymentWay: 10
+    paySource: 2
+    orderId: "{{orderId}}"
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - code

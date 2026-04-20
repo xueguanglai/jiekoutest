@@ -1,0 +1,12 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/orderCenter/queryDetail
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json', 'platform': 'saas-jr', 'jwtToken': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc0NDkzNjk1LCJleHAiOjE4MDYwMjk2OTV9.q0lmiCEhElXH_GWZwhdozvSKJL03lns8D27AIbfTUzITSzMiGJvNxcVWmlCNfE8gBq0WbZ7xcvJ1wDReNy_k6g'}
+INFO     api-test:request_util.py:48 请求体: {
+  "orderId": "",
+  "searchType": "paymentDetailManager",
+  "orderType": 1,
+  "marketId": "561863468761264128"
+}
+INFO     api-test:request_util.py:77 响应状态码: 200
+INFO     api-test:request_util.py:78 响应耗时(ms): 12
+INFO     api-test:request_util.py:79 响应内容: {"code":401,"message":"用户认证失败，请重新登录"}

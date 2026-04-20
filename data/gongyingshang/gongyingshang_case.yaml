@@ -1,0 +1,31 @@
+- title: 正常账号密码登录
+  method: post
+  url: /easyhome-app-application/smartApi/juranApp/login
+  body:
+    areaCode: "86"
+    phone: "18350000000"
+    password: "65a0ec385ca6a0c1e20d1f8270c28303"
+    loginTarget: "operation"
+  expected_status_code: 200
+  expected_business_codes:
+    - 200
+  expected_keys:
+    - code
+    - data
+    - data.jwtToken
+    - data.memberId
+  extract:
+    jwtToken: data.jwtToken
+    memberId: data.memberId
+    phone: data.phone
+
+
+- title: 供应商管理查询
+  method: post
+  url: /easyhome-ops-web-application/supplier/userList
+  headers:
+    platform: operation
+  body:
+    page: 1
+    pageSize: 10
+  expected_status_code: 200

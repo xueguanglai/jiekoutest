@@ -1,0 +1,15 @@
+- title: 查询售后列表示例
+  method: post
+  url: /api/refund/list
+  body:
+    pageNum: 1
+    pageSize: 10
+    status: ""
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - code
+  skip: true
+  skip_reason: 需要先配置售后模块真实接口和账号

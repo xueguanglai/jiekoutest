@@ -1,0 +1,51 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-app-application/shop/order/addShopOrderBySeller
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json', 'platform': 'saas-jr', 'jwtToken': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc0NDkzNjk1LCJleHAiOjE4MDYwMjk2OTV9.q0lmiCEhElXH_GWZwhdozvSKJL03lns8D27AIbfTUzITSzMiGJvNxcVWmlCNfE8gBq0WbZ7xcvJ1wDReNy_k6g'}
+INFO     api-test:request_util.py:48 请求体: {
+  "deliveryAddressId": "1145212365764165632",
+  "shopId": "568237386877833216",
+  "deliveryTime": "2026-03-02",
+  "deliveryType": 1,
+  "campaignIds": [],
+  "boothId": "1077383802818498560",
+  "shopGuideId": "927003290372202496",
+  "shopGuideName": "薛广来①号",
+  "shopGuidePhone": "18353208862",
+  "goodsDetailsList": [
+    {
+      "goodsSkuId": "1168083525878956032",
+      "shopId": "568237386877833216",
+      "goodsCode": "00218890101200002",
+      "goodsId": "1168083308572065792",
+      "goodsSkuTitle": "1000cm*9000ml+湖水秘鲁色惨玛瑙红+长的像蟑螂但是却又不像+我说是保修1年不知道行不行300块",
+      "goodsTitle": "我要看看同步供应链的商品的",
+      "goodsPrice": "233",
+      "goodsPic": "file/easyhome-web-business/1767604421901231_750x750.jpg",
+      "goodsPicUrl": "https://osscdnuat.jrdaimao.com/file/easyhome-web-business/1767604421901231_750x750.jpg",
+      "deliveryTime": "2026-03-02",
+      "goodsNum": 1,
+      "skillGoods": false,
+      "skillPrice": null,
+      "skillOrgPrice": "233",
+      "equityTagsMap": null
+    }
+  ],
+  "dmcouponIdSet": [],
+  "acMemberId": "100000000110",
+  "isMember": 0,
+  "memberId": "927003290372202496",
+  "phone": "18353208862",
+  "linkedCampaignId": "",
+  "useVCards": [
+    "536037"
+  ],
+  "redCouponIdSet": [],
+  "registerFlag": false,
+  "marketId": "561863468761264128",
+  "usePump": false,
+  "orderPumpMoney": "",
+  "validateCode": ""
+}
+INFO     api-test:request_util.py:77 响应状态码: 200
+INFO     api-test:request_util.py:78 响应耗时(ms): 11
+INFO     api-test:request_util.py:79 响应内容: {"code":401,"message":"用户认证失败，请重新登录"}

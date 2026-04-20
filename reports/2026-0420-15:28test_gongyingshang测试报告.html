@@ -1,0 +1,273 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>2026-0420-15:28test_gongyingshang测试报告.html</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: #f5f7fb;
+                color: #1f2937;
+            }
+            .container {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 32px 20px 60px;
+            }
+            .hero {
+                background: linear-gradient(135deg, #0f172a, #1d4ed8);
+                color: #fff;
+                border-radius: 16px;
+                padding: 28px;
+                margin-bottom: 24px;
+            }
+            .hero h1 {
+                margin: 0 0 12px 0;
+                font-size: 30px;
+            }
+            .hero p {
+                margin: 0;
+                opacity: 0.9;
+            }
+            .summary {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(120px, 1fr));
+                gap: 12px;
+                margin: 24px 0;
+            }
+            .summary-card {
+                background: #fff;
+                border-radius: 12px;
+                padding: 16px;
+                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            }
+            .summary-card span {
+                display: block;
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+            .summary-card strong {
+                font-size: 28px;
+            }
+            .case-card {
+                background: #fff;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+                border-left: 6px solid #94a3b8;
+                overflow: hidden;
+            }
+            .status-passed { border-left-color: #16a34a; }
+            .status-failed { border-left-color: #dc2626; }
+            .status-skipped { border-left-color: #ca8a04; }
+            .status-error { border-left-color: #7c3aed; }
+            .case-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 20px;
+            }
+            .case-summary::-webkit-details-marker {
+                display: none;
+            }
+            .case-content {
+                padding: 0 20px 20px;
+            }
+            .case-header {
+                display: flex;
+                justify-content: space-between;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            .case-index {
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            .case-header h2 {
+                margin: 0 0 8px 0;
+                font-size: 24px;
+            }
+            .case-nodeid {
+                color: #94a3b8;
+                font-size: 12px;
+                word-break: break-all;
+            }
+            .case-meta {
+                min-width: 160px;
+                background: #f8fafc;
+                border-radius: 12px;
+                padding: 12px;
+            }
+            .case-meta div {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+            .case-meta div:last-child {
+                margin-bottom: 0;
+            }
+            .case-meta span {
+                color: #64748b;
+            }
+            .api-card {
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                margin-top: 14px;
+                background: #fcfdff;
+                overflow: hidden;
+            }
+            .api-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 16px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                align-items: center;
+                background: #f8fafc;
+            }
+            .api-summary::-webkit-details-marker {
+                display: none;
+            }
+            .api-content {
+                padding: 16px;
+                border-top: 1px solid #e2e8f0;
+            }
+            .api-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: #0f172a;
+                margin-right: auto;
+            }
+            .api-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 4px 10px;
+                border-radius: 999px;
+                background: #e2e8f0;
+                color: #334155;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            .kv {
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 6px 0;
+                border-bottom: 1px dashed #e2e8f0;
+            }
+            .kv span {
+                color: #64748b;
+            }
+            .section-title {
+                margin: 14px 0 8px;
+                font-weight: 700;
+                color: #334155;
+            }
+            pre {
+                margin: 0;
+                white-space: pre-wrap;
+                word-break: break-word;
+                background: #0f172a;
+                color: #e2e8f0;
+                padding: 14px;
+                border-radius: 10px;
+                overflow-x: auto;
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            .error-box {
+                margin-top: 12px;
+                background: #fff1f2;
+                border: 1px solid #fecdd3;
+                border-radius: 12px;
+                padding: 14px;
+            }
+            .empty {
+                padding: 16px;
+                color: #64748b;
+                background: #f8fafc;
+                border-radius: 12px;
+                margin-top: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <h1>2026-0420-15:28test_gongyingshang测试报告.html</h1>
+                <p>生成时间：2026-04-20 15:28:08</p>
+            </div>
+            <div class="summary">
+                <div class="summary-card"><span>总用例</span><strong>1</strong></div>
+                <div class="summary-card"><span>通过</span><strong>0</strong></div>
+                <div class="summary-card"><span>失败</span><strong>0</strong></div>
+                <div class="summary-card"><span>跳过</span><strong>0</strong></div>
+                <div class="summary-card"><span>异常</span><strong>1</strong></div>
+            </div>
+            
+            <details class="case-card status-error">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 1</div>
+                            <h2>供应商管理查询</h2>
+                            <div class="case-nodeid">testcases/test_gongyingshang.py::TestOrder::test_order_business[case0]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>异常</strong></div>
+                            <div><span>耗时</span><strong>0.137 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>role_login = &lt;function role_login.&lt;locals&gt;._login at 0x102c5d620&gt;
+
+    @pytest.fixture(scope=&quot;session&quot;)
+    def order_login_token(role_login):
+&gt;       return role_login(&quot;order_user&quot;)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+
+../conftest.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../conftest.py:141: in _login
+    login_by_password(
+../common/login_service.py:45: in login_by_password
+    return validate_and_extract(response, case)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:10: in validate_response
+    assert_status_code(response, case[&quot;expected_status_code&quot;])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response = &lt;Response [404]&gt;, expected_code = 200
+
+    def assert_status_code(response, expected_code=200):
+        actual_code = response.status_code
+&gt;       assert actual_code == expected_code, (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f&quot;状态码断言失败，期望：{expected_code}，实际：{actual_code}&quot;
+        )
+E       AssertionError: 状态码断言失败，期望：200，实际：404
+
+../common/assert_util.py:3: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        <div class="empty">当前用例没有记录到接口请求数据。</div>
+                    </div>
+                </div>
+            </details>
+            
+        </div>
+    </body>
+    </html>
+    

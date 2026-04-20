@@ -1,0 +1,10 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-ops-web-application/supplier/userList
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json', 'platform': 'operation', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyNTgyLCJleHAiOjE4MDgyMDg1ODJ9.Ka2rmYGbTMH0t8IgB4a4kPwvTI4zJMMGG2eoU89gtxo0IrQNpHpytgWV51mW8iNswfpwpTqRo--jVkzBLU8LSA'}
+INFO     api-test:request_util.py:48 请求体: {
+  "page": 1,
+  "pageSize": 10
+}
+INFO     api-test:request_util.py:89 响应状态码: 200
+INFO     api-test:request_util.py:90 响应耗时(ms): 12
+INFO     api-test:request_util.py:91 响应内容: {"code":401,"message":"用户认证失败，请重新登录"}

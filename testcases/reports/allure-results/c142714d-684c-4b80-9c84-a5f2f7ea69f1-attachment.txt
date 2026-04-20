@@ -1,0 +1,14 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/smartApi/juranApp/login
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json'}
+INFO     api-test:request_util.py:48 请求体: {
+  "areaCode": "86",
+  "phone": "18350000000",
+  "password": "65a0ec385ca6a0c1e20d1f8270c28303",
+  "sliderCode": "",
+  "signKey": "f4c9f2e1256ac58852ff5d9ceea72b7a",
+  "loginType": 2
+}
+INFO     api-test:request_util.py:89 响应状态码: 404
+INFO     api-test:request_util.py:90 响应耗时(ms): 118
+INFO     api-test:request_util.py:91 响应内容: {"timestamp":1776670089021,"path":"/smartApi/juranApp/login","status":404,"error":"Not Found","message":"No matching handler","requestId":"04f89510-178819"}

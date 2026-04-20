@@ -1,0 +1,9 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/saas/order/queryNonPayOrder
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json', 'platform': 'saas-jr', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyOTY1LCJleHAiOjE4MDgyMDg5NjV9.DDhUq83MU1-Wxg1KsGikG4vQm1moWOA6D0Ibk77sQeG283pDmFUeQzNd-hfUnLoy2G7ATt_VzkcZ-XUaN7itkA'}
+INFO     api-test:request_util.py:48 请求体: {
+  "orderId": ""
+}
+INFO     api-test:request_util.py:89 响应状态码: 404
+INFO     api-test:request_util.py:90 响应耗时(ms): 10
+INFO     api-test:request_util.py:91 响应内容: {"timestamp":1776672965169,"path":"/saas/order/queryNonPayOrder","status":404,"error":"Not Found","message":"No matching handler","requestId":"9d59932c-180638"}

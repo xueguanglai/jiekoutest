@@ -1,0 +1,12 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/payment/cashPayment
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json', 'platform': 'saas-jr', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2Njc0OTg1LCJleHAiOjE4MDgyMTA5ODV9.S2v9nnNu7jPHsgjZsuf0hzXP3Bjo7SFx8wsrGbVJBNrbXv06GNzkFpVJ8V_c8-Pbv9mR6eXd9YIFWTzzehfFmg'}
+INFO     api-test:request_util.py:48 请求体: {
+  "payMoney": "233",
+  "paymentWay": 10,
+  "paySource": 2,
+  "orderId": "9917766749868012221"
+}
+INFO     api-test:request_util.py:89 响应状态码: 200
+INFO     api-test:request_util.py:90 响应耗时(ms): 1221
+INFO     api-test:request_util.py:91 响应内容: {"code":"200","data":null,"message":"操作成功"}

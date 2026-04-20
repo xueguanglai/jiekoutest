@@ -1,0 +1,561 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>2026-0420-16:49test_order测试报告.html</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: #f5f7fb;
+                color: #1f2937;
+            }
+            .container {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 32px 20px 60px;
+            }
+            .hero {
+                background: linear-gradient(135deg, #0f172a, #1d4ed8);
+                color: #fff;
+                border-radius: 16px;
+                padding: 28px;
+                margin-bottom: 24px;
+            }
+            .hero h1 {
+                margin: 0 0 12px 0;
+                font-size: 30px;
+            }
+            .hero p {
+                margin: 0;
+                opacity: 0.9;
+            }
+            .summary {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(120px, 1fr));
+                gap: 12px;
+                margin: 24px 0;
+            }
+            .summary-card {
+                background: #fff;
+                border-radius: 12px;
+                padding: 16px;
+                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            }
+            .summary-card span {
+                display: block;
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+            .summary-card strong {
+                font-size: 28px;
+            }
+            .case-card {
+                background: #fff;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+                border-left: 6px solid #94a3b8;
+                overflow: hidden;
+            }
+            .status-passed { border-left-color: #16a34a; }
+            .status-failed { border-left-color: #dc2626; }
+            .status-skipped { border-left-color: #ca8a04; }
+            .status-error { border-left-color: #7c3aed; }
+            .case-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 20px;
+            }
+            .case-summary::-webkit-details-marker {
+                display: none;
+            }
+            .case-content {
+                padding: 0 20px 20px;
+            }
+            .case-header {
+                display: flex;
+                justify-content: space-between;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            .case-index {
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            .case-header h2 {
+                margin: 0 0 8px 0;
+                font-size: 24px;
+            }
+            .case-nodeid {
+                color: #94a3b8;
+                font-size: 12px;
+                word-break: break-all;
+            }
+            .case-meta {
+                min-width: 160px;
+                background: #f8fafc;
+                border-radius: 12px;
+                padding: 12px;
+            }
+            .case-meta div {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+            .case-meta div:last-child {
+                margin-bottom: 0;
+            }
+            .case-meta span {
+                color: #64748b;
+            }
+            .api-card {
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                margin-top: 14px;
+                background: #fcfdff;
+                overflow: hidden;
+            }
+            .api-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 16px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                align-items: center;
+                background: #f8fafc;
+            }
+            .api-summary::-webkit-details-marker {
+                display: none;
+            }
+            .api-content {
+                padding: 16px;
+                border-top: 1px solid #e2e8f0;
+            }
+            .api-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: #0f172a;
+                margin-right: auto;
+            }
+            .api-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 4px 10px;
+                border-radius: 999px;
+                background: #e2e8f0;
+                color: #334155;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            .kv {
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 6px 0;
+                border-bottom: 1px dashed #e2e8f0;
+            }
+            .kv span {
+                color: #64748b;
+            }
+            .section-title {
+                margin: 14px 0 8px;
+                font-weight: 700;
+                color: #334155;
+            }
+            pre {
+                margin: 0;
+                white-space: pre-wrap;
+                word-break: break-word;
+                background: #0f172a;
+                color: #e2e8f0;
+                padding: 14px;
+                border-radius: 10px;
+                overflow-x: auto;
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            .error-box {
+                margin-top: 12px;
+                background: #fff1f2;
+                border: 1px solid #fecdd3;
+                border-radius: 12px;
+                padding: 14px;
+            }
+            .empty {
+                padding: 16px;
+                color: #64748b;
+                background: #f8fafc;
+                border-radius: 12px;
+                margin-top: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <h1>2026-0420-16:49test_order测试报告.html</h1>
+                <p>生成时间：2026-04-20 16:49:48</p>
+            </div>
+            <div class="summary">
+                <div class="summary-card"><span>总用例</span><strong>6</strong></div>
+                <div class="summary-card"><span>通过</span><strong>6</strong></div>
+                <div class="summary-card"><span>失败</span><strong>0</strong></div>
+                <div class="summary-card"><span>跳过</span><strong>0</strong></div>
+                <div class="summary-card"><span>异常</span><strong>0</strong></div>
+            </div>
+            
+            <details class="case-card status-passed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 1</div>
+                            <h2>查询订单列表</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case0]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>通过</strong></div>
+                            <div><span>耗时</span><strong>0.636 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/orderCenter/getCashierOrderLsit</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">617 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/orderCenter/getCashierOrderLsit</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>617 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2Njc0OTg1LCJleHAiOjE4MDgyMTA5ODV9.S2v9nnNu7jPHsgjZsuf0hzXP3Bjo7SFx8wsrGbVJBNrbXv06GNzkFpVJ8V_c8-Pbv9mR6eXd9YIFWTzzehfFmg&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;page&quot;: 1,
+  &quot;marketId&quot;: &quot;561863468761264128&quot;,
+  &quot;tagType&quot;: 2,
+  &quot;searchText&quot;: &quot;&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:&quot;200&quot;,&quot;data&quot;:{&quot;total&quot;:-1,&quot;list&quot;:[{&quot;orderId&quot;:&quot;9917766723043462367&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-20 16:05:04&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1206116972748668928&quot;,&quot;merOrderId&quot;:&quot;11K8202604201605051557718313&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917766723043462367&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1206116972748668928&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-20 16:05:05&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1206116972748668928&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917766651038317099&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-20 14:05:03&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1206086769049690113&quot;,&quot;merOrderId&quot;:&quot;11K8202604201405040276859251&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917766651038317099&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1206086769049690113&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-20 14:05:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1206086769049690113&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917766579039853919&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-20 12:05:04&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1206056570694230016&quot;,&quot;merOrderId&quot;:&quot;11K8202604201205041781415637&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917766579039853919&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1206056570694230016&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-20 12:05:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1206056570694230016&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917766507037948472&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-20 10:05:03&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1206026371109838849&quot;,&quot;merOrderId&quot;:&quot;11K8202604201005040367767110&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917766507037948472&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1206026371109838849&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-20 10:05:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1206026371109838849&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917766435036788105&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-20 08:05:03&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1205996171416395776&quot;,&quot;merOrderId&quot;:&quot;11K8202604200805038687039674&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917766435036788105&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1205996171416395776&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-20 08:05:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1205996171416395776&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917766363037631803&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-20 06:05:03&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1205965972746362881&quot;,&quot;merOrderId&quot;:&quot;11K8202604200605039445949110&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917766363037631803&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1205965972746362881&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-20 06:05:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1205965972746362881&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917766360040067323&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-20 06:00:04&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1205964715696676865&quot;,&quot;merOrderId&quot;:&quot;11K8202604200600042408823256&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917766360040067323&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1205964715696676865&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-20 06:00:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1205964715696676865&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:12,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917766003037703350&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-19 20:05:03&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1205814977898831873&quot;,&quot;merOrderId&quot;:&quot;11K8202604192005039677644025&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917766003037703350&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1205814977898831873&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-19 20:05:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1205814977898831873&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917765931037748072&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-19 18:05:03&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1205784778939392001&quot;,&quot;merOrderId&quot;:&quot;11K8202604191805039747705055&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917765931037748072&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1205784778939392001&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-19 18:05:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1205784778939392001&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false},{&quot;orderId&quot;:&quot;9917765859037468942&quot;,&quot;refundOrderId&quot;:null,&quot;orderRefundApplyId&quot;:null,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;goodsPics&quot;:null,&quot;gmtCreated&quot;:&quot;2026-04-19 16:05:03&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;orderDiscountMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;100&quot;,&quot;totalRefundPrice&quot;:null,&quot;orderChildrenFlag&quot;:0,&quot;payStatus&quot;:3,&quot;orderStatus&quot;:4,&quot;orderOriginalStatus&quot;:5,&quot;orderPaymentWayAll&quot;:&quot;现金&quot;,&quot;isStoreCardRefund&quot;:null,&quot;isNotStoreCardRefund&quot;:null,&quot;paymentWayS&quot;:null,&quot;refundWayS&quot;:null,&quot;cashierOrderChildTagVos&quot;:null,&quot;applyRefundOrderDate&quot;:null,&quot;refundStatus&quot;:null,&quot;moneyToCN&quot;:null,&quot;havePresent&quot;:null,&quot;goodsDetailVOS&quot;:[{&quot;shopCartId&quot;:null,&quot;goodsSkuId&quot;:null,&quot;shopId&quot;:null,&quot;marketId&quot;:null,&quot;goodsSkuCode&quot;:null,&quot;goodsId&quot;:null,&quot;goodsTitle&quot;:&quot;推AC商品勿动谁动孝坤拿一米大砍刀砍谁&quot;,&quot;goodsSkuTitle&quot;:&quot;长方体&quot;,&quot;goodsStock&quot;:null,&quot;goodsPrice&quot;:&quot;100&quot;,&quot;orgGoodsPrice&quot;:null,&quot;goodsPic&quot;:null,&quot;goodsPicUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/render/file/1650513769301154_750x750.jpg&quot;,&quot;deliveryTime&quot;:null,&quot;goodsTotalPrice&quot;:null,&quot;goodsNum&quot;:1,&quot;deliveryType&quot;:null,&quot;promotionActivityFlag&quot;:null,&quot;goodsInsurance&quot;:null,&quot;skillGoods&quot;:null,&quot;skillPrice&quot;:null,&quot;equityTagsMap&quot;:null,&quot;insuranceStatusName&quot;:null,&quot;goodsSkuStock&quot;:null}],&quot;orderPaymentVOS&quot;:[{&quot;orderPaymentId&quot;:&quot;1205754579833151489&quot;,&quot;merOrderId&quot;:&quot;11K8202604191605039461332997&quot;,&quot;subMerOrderId&quot;:null,&quot;orderBatchId&quot;:null,&quot;orderId&quot;:&quot;9917765859037468942&quot;,&quot;orderChildrenId&quot;:null,&quot;orderTotalMoney&quot;:&quot;100&quot;,&quot;paymentMoney&quot;:&quot;100&quot;,&quot;payStatus&quot;:null,&quot;platformOrderSno&quot;:null,&quot;payWayOrderSno&quot;:&quot;1205754579833151489&quot;,&quot;paymentPlatform&quot;:5,&quot;paymentWay&quot;:10,&quot;payTime&quot;:&quot;2026-04-19 16:05:04&quot;,&quot;subRefundAmount&quot;:null,&quot;paymentWayDesc&quot;:null,&quot;paymentWayName&quot;:null,&quot;paymentWayCode&quot;:&quot;1205754579833151489&quot;,&quot;paymentType&quot;:6,&quot;mid&quot;:&quot;&quot;,&quot;posId&quot;:null,&quot;seqId&quot;:null,&quot;creatorId&quot;:null,&quot;midBizType&quot;:null,&quot;paymentMarking&quot;:null,&quot;paymentSubOrderId&quot;:null,&quot;addRefundMoney&quot;:&quot;0&quot;,&quot;cashCurrency&quot;:null,&quot;exchangeRate&quot;:null,&quot;tid&quot;:null,&quot;paymentPayStatus&quot;:3}],&quot;refundApplyMoney&quot;:null,&quot;activityName&quot;:null,&quot;presentName&quot;:null,&quot;orderPaidMoney&quot;:&quot;100&quot;,&quot;refundApplyTime&quot;:null,&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;buyerName&quot;:null,&quot;buyerPhone&quot;:null,&quot;orderDueMoney&quot;:&quot;0&quot;,&quot;refundApprovalTime&quot;:null,&quot;cashierOrderStatus&quot;:7,&quot;orderRefundMoney&quot;:&quot;100&quot;,&quot;orderSource&quot;:62,&quot;isTmallOrder&quot;:false,&quot;wmsStatus&quot;:0,&quot;boothId&quot;:1077383802818498560,&quot;brandId&quot;:null,&quot;brandName&quot;:null,&quot;showRefundButton&quot;:null,&quot;childrenPayStatus&quot;:null,&quot;showRefundCancelButton&quot;:false}],&quot;pageNum&quot;:1,&quot;pageSize&quot;:10,&quot;size&quot;:10,&quot;startRow&quot;:1,&quot;endRow&quot;:10,&quot;pages&quot;:1,&quot;prePage&quot;:0,&quot;nextPage&quot;:0,&quot;isFirstPage&quot;:true,&quot;isLastPage&quot;:true,&quot;hasPreviousPage&quot;:false,&quot;hasNextPage&quot;:true,&quot;navigatePages&quot;:8,&quot;navigatepageNums&quot;:[1],&quot;navigateFirstPage&quot;:1,&quot;navigateLastPage&quot;:1},&quot;message&quot;:&quot;操作成功&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-passed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 2</div>
+                            <h2>查询店铺详情</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case1]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>通过</strong></div>
+                            <div><span>耗时</span><strong>0.279 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/getShopDetail</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">270 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/getShopDetail</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>270 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2Njc0OTg1LCJleHAiOjE4MDgyMTA5ODV9.S2v9nnNu7jPHsgjZsuf0hzXP3Bjo7SFx8wsrGbVJBNrbXv06GNzkFpVJ8V_c8-Pbv9mR6eXd9YIFWTzzehfFmg&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;boothId&quot;: &quot;1077383802818498560&quot;,
+  &quot;shopId&quot;: &quot;568237386877833216&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:&quot;200&quot;,&quot;data&quot;:{&quot;shopSaasDataVO&quot;:{&quot;shopId&quot;:&quot;568237386877833216&quot;,&quot;shopCode&quot;:&quot;0257423816468&quot;,&quot;logoKey&quot;:&quot;file/1648000094937/picture&quot;,&quot;mainKey&quot;:&quot;file/easyhome-web/1694773773417817_1179x845.jpg&quot;,&quot;mainUrl&quot;:&quot;https://osscdnuat.jrdaimao.com/file/easyhome-web/1694773773417817_1179x845.jpg&quot;,&quot;shopName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;boothCode&quot;:&quot;0010010050071879164115482262238&quot;,&quot;acBoothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;boothName&quot;:&quot;1001-5-B-88888888&quot;,&quot;boothId&quot;:&quot;1077383802818498560&quot;,&quot;phone&quot;:&quot;13500000000&quot;,&quot;categoryName&quot;:&quot;餐具&quot;,&quot;categoryId&quot;:&quot;656418720974913536&quot;,&quot;shopAddress&quot;:&quot;东直门居然大厦&quot;,&quot;categoryNames&quot;:[&quot;定制&quot;,&quot;家具&quot;,&quot;家居饰品&quot;,&quot;酒店用品&quot;],&quot;easyUserRightsVOS&quot;:[],&quot;entryAppTime&quot;:null,&quot;isHoliday&quot;:1,&quot;workingDay&quot;:&quot;01:00-23:00&quot;,&quot;holiday&quot;:&quot;10:00-20:00&quot;,&quot;label&quot;:&quot;1111111|22222&quot;,&quot;labels&quot;:[&quot;1111111&quot;,&quot;22222&quot;],&quot;specialService&quot;:&quot;家具家政一条龙&quot;,&quot;specialServices&quot;:[&quot;家具家政一条龙&quot;],&quot;acCode&quot;:&quot;10011009025001&quot;,&quot;marketId&quot;:&quot;561863468761264128&quot;,&quot;saleBasicCommonRate&quot;:null,&quot;saleBasicLoopRate&quot;:null,&quot;saleRentalRatio&quot;:null,&quot;status&quot;:1,&quot;entryed&quot;:2},&quot;shopBrandVOS&quot;:[{&quot;url&quot;:null,&quot;brandLogo&quot;:&quot;&quot;,&quot;brandName&quot;:&quot;兴兴推送rem品牌哈&quot;},{&quot;url&quot;:null,&quot;brandLogo&quot;:&quot;&quot;,&quot;brandName&quot;:&quot;共禾京品&quot;},{&quot;url&quot;:&quot;https://osscdnuat.jrdaimao.com/file/1650467341450/L2.jpg&quot;,&quot;brandLogo&quot;:&quot;file/1650467341450/L2.jpg&quot;,&quot;brandName&quot;:&quot;九牧&quot;},{&quot;url&quot;:&quot;https://osscdnuat.jrdaimao.com/file/1650939493452/喜临门.png&quot;,&quot;brandLogo&quot;:&quot;file/1650939493452/喜临门.png&quot;,&quot;brandName&quot;:&quot;喜临门&quot;},{&quot;url&quot;:null,&quot;brandLogo&quot;:&quot;&quot;,&quot;brandName&quot;:&quot;雅兰窗帘&quot;},{&quot;url&quot;:&quot;https://osscdnuat.jrdaimao.com/file/1634629366724/picture&quot;,&quot;brandLogo&quot;:&quot;file/1634629366724/picture&quot;,&quot;brandName&quot;:&quot;沃伦门窗&quot;},{&quot;url&quot;:null,&quot;brandLogo&quot;:&quot;&quot;,&quot;brandName&quot;:&quot;兴兴uat品牌2&quot;},{&quot;url&quot;:&quot;https://osscdnuat.jrdaimao.com/file/1661307947043119.jpeg&quot;,&quot;brandLogo&quot;:&quot;file/1661307947043119.jpeg&quot;,&quot;brandName&quot;:&quot;兴兴uat品牌1品牌名字加长还能加长呢呀&quot;},{&quot;url&quot;:null,&quot;brandLogo&quot;:&quot;&quot;,&quot;brandName&quot;:&quot;洞心&quot;},{&quot;url&quot;:null,&quot;brandLogo&quot;:null,&quot;brandName&quot;:&quot;家饰雅兰&quot;}]},&quot;message&quot;:&quot;操作成功&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-passed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 3</div>
+                            <h2>生成订单</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case2]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>通过</strong></div>
+                            <div><span>耗时</span><strong>0.899 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-app-application/shop/order/addShopOrderBySeller</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">889 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-app-application/shop/order/addShopOrderBySeller</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>889 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2Njc0OTg1LCJleHAiOjE4MDgyMTA5ODV9.S2v9nnNu7jPHsgjZsuf0hzXP3Bjo7SFx8wsrGbVJBNrbXv06GNzkFpVJ8V_c8-Pbv9mR6eXd9YIFWTzzehfFmg&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;deliveryAddressId&quot;: &quot;1145212365764165632&quot;,
+  &quot;shopId&quot;: &quot;568237386877833216&quot;,
+  &quot;deliveryTime&quot;: &quot;2026-03-02&quot;,
+  &quot;deliveryType&quot;: 1,
+  &quot;campaignIds&quot;: [],
+  &quot;boothId&quot;: &quot;1077383802818498560&quot;,
+  &quot;shopGuideId&quot;: &quot;927003290372202496&quot;,
+  &quot;shopGuideName&quot;: &quot;薛广来①号&quot;,
+  &quot;shopGuidePhone&quot;: &quot;18353208862&quot;,
+  &quot;goodsDetailsList&quot;: [
+    {
+      &quot;goodsSkuId&quot;: &quot;1168083525878956032&quot;,
+      &quot;shopId&quot;: &quot;568237386877833216&quot;,
+      &quot;goodsCode&quot;: &quot;00218890101200002&quot;,
+      &quot;goodsId&quot;: &quot;1168083308572065792&quot;,
+      &quot;goodsSkuTitle&quot;: &quot;1000cm*9000ml+湖水秘鲁色惨玛瑙红+长的像蟑螂但是却又不像+我说是保修1年不知道行不行300块&quot;,
+      &quot;goodsTitle&quot;: &quot;我要看看同步供应链的商品的&quot;,
+      &quot;goodsPrice&quot;: &quot;233&quot;,
+      &quot;goodsPic&quot;: &quot;file/easyhome-web-business/1767604421901231_750x750.jpg&quot;,
+      &quot;goodsPicUrl&quot;: &quot;https://osscdnuat.jrdaimao.com/file/easyhome-web-business/1767604421901231_750x750.jpg&quot;,
+      &quot;deliveryTime&quot;: &quot;2026-03-02&quot;,
+      &quot;goodsNum&quot;: 1,
+      &quot;skillGoods&quot;: false,
+      &quot;skillPrice&quot;: null,
+      &quot;skillOrgPrice&quot;: &quot;233&quot;,
+      &quot;equityTagsMap&quot;: null
+    }
+  ],
+  &quot;dmcouponIdSet&quot;: [],
+  &quot;acMemberId&quot;: &quot;100000000110&quot;,
+  &quot;isMember&quot;: 0,
+  &quot;memberId&quot;: &quot;927003290372202496&quot;,
+  &quot;phone&quot;: &quot;18353208862&quot;,
+  &quot;linkedCampaignId&quot;: &quot;&quot;,
+  &quot;useVCards&quot;: [
+    &quot;536037&quot;
+  ],
+  &quot;redCouponIdSet&quot;: [],
+  &quot;registerFlag&quot;: false,
+  &quot;marketId&quot;: &quot;561863468761264128&quot;,
+  &quot;usePump&quot;: false,
+  &quot;orderPumpMoney&quot;: &quot;&quot;,
+  &quot;validateCode&quot;: &quot;&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:&quot;200&quot;,&quot;data&quot;:{&quot;orderId&quot;:&quot;9917766749868012221&quot;,&quot;orderRealMoney&quot;:&quot;233&quot;,&quot;orderTotalMoney&quot;:&quot;233&quot;,&quot;bindPosed&quot;:false,&quot;orderPkgId&quot;:null,&quot;orderNum&quot;:null,&quot;goodsAmount&quot;:null,&quot;paymentFlag&quot;:null,&quot;orderPkgRealMoney&quot;:null},&quot;message&quot;:&quot;操作成功&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-passed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 4</div>
+                            <h2>选择支付方式</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case3]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>通过</strong></div>
+                            <div><span>耗时</span><strong>0.309 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/order/queryNonPayOrder</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">301 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/order/queryNonPayOrder</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>301 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2Njc0OTg1LCJleHAiOjE4MDgyMTA5ODV9.S2v9nnNu7jPHsgjZsuf0hzXP3Bjo7SFx8wsrGbVJBNrbXv06GNzkFpVJ8V_c8-Pbv9mR6eXd9YIFWTzzehfFmg&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;orderId&quot;: &quot;9917766749868012221&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:&quot;200&quot;,&quot;data&quot;:{&quot;orderId&quot;:&quot;9917766749868012221&quot;,&quot;orderChildrenId&quot;:null,&quot;orderPkgId&quot;:null,&quot;orderRealMoney&quot;:&quot;233&quot;,&quot;orderTotalMoney&quot;:&quot;233&quot;,&quot;orderDueMoney&quot;:&quot;233&quot;,&quot;payStatus&quot;:1,&quot;orderBatchesVOS&quot;:[],&quot;allOrderBatchesVOS&quot;:null,&quot;miniPayQrcode&quot;:null,&quot;isCloseBatch&quot;:true,&quot;mixturePaySwitch&quot;:true,&quot;orderPaidMoney&quot;:&quot;0&quot;,&quot;paymentWayList&quot;:[{&quot;paywayNameCode&quot;:19,&quot;paywayNameCodeDesc&quot;:&quot;现金&quot;,&quot;payProductGroupCode&quot;:null,&quot;paymentCodeType&quot;:null,&quot;paymentWay&quot;:null,&quot;paySource&quot;:2},{&quot;paywayNameCode&quot;:2,&quot;paywayNameCodeDesc&quot;:&quot;微信-C扫B&quot;,&quot;payProductGroupCode&quot;:null,&quot;paymentCodeType&quot;:2,&quot;paymentWay&quot;:null,&quot;paySource&quot;:27},{&quot;paywayNameCode&quot;:14,&quot;paywayNameCodeDesc&quot;:&quot;储值卡&quot;,&quot;payProductGroupCode&quot;:null,&quot;paymentCodeType&quot;:null,&quot;paymentWay&quot;:null,&quot;paySource&quot;:2},{&quot;paywayNameCode&quot;:41,&quot;paywayNameCodeDesc&quot;:&quot;聚分期支付方式&quot;,&quot;payProductGroupCode&quot;:null,&quot;paymentCodeType&quot;:7,&quot;paymentWay&quot;:null,&quot;paySource&quot;:1},{&quot;paywayNameCode&quot;:6,&quot;paywayNameCodeDesc&quot;:&quot;支付宝-C扫B&quot;,&quot;payProductGroupCode&quot;:null,&quot;paymentCodeType&quot;:2,&quot;paymentWay&quot;:1,&quot;paySource&quot;:27},{&quot;paywayNameCode&quot;:10,&quot;paywayNameCodeDesc&quot;:&quot;银联二维码-C扫B&quot;,&quot;payProductGroupCode&quot;:null,&quot;paymentCodeType&quot;:2,&quot;paymentWay&quot;:null,&quot;paySource&quot;:27}],&quot;currencyVO&quot;:{&quot;cityStationId&quot;:&quot;824358401244008410&quot;,&quot;currencyId&quot;:&quot;824358401244008410&quot;,&quot;countryNo&quot;:&quot;156&quot;,&quot;countryName&quot;:&quot;中国&quot;,&quot;currencyCode&quot;:&quot;CNY&quot;,&quot;currencyName&quot;:&quot;中国人民币元&quot;,&quot;currencySymbol&quot;:&quot;￥&quot;,&quot;defaultRate&quot;:null},&quot;shopName&quot;:null,&quot;marketName&quot;:null,&quot;easyFlag&quot;:null},&quot;message&quot;:&quot;操作成功&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-passed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 5</div>
+                            <h2>查询支付详情</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case4]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>通过</strong></div>
+                            <div><span>耗时</span><strong>0.347 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/orderCenter/queryDetail</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">342 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/orderCenter/queryDetail</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>342 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2Njc0OTg1LCJleHAiOjE4MDgyMTA5ODV9.S2v9nnNu7jPHsgjZsuf0hzXP3Bjo7SFx8wsrGbVJBNrbXv06GNzkFpVJ8V_c8-Pbv9mR6eXd9YIFWTzzehfFmg&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;orderId&quot;: &quot;9917766749868012221&quot;,
+  &quot;searchType&quot;: &quot;paymentDetailManager&quot;,
+  &quot;orderType&quot;: 1,
+  &quot;marketId&quot;: &quot;561863468761264128&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:&quot;200&quot;,&quot;data&quot;:{&quot;orderChildIds&quot;:[],&quot;orderStatus&quot;:&quot;1&quot;,&quot;cashierOrderStatus&quot;:1,&quot;boothCode&quot;:&quot;1001-5-B-88888888&quot;,&quot;boothName&quot;:&quot;家饰雅兰--唯一推AC勿动&quot;,&quot;brandName&quot;:&quot;雅兰窗帘,家饰雅兰,兴兴uat品牌2,兴兴uat品牌1品牌名字加长还能加长呢呀,九牧,共禾京品,洞心,兴兴推送rem品牌哈,喜临门,沃伦门窗&quot;,&quot;orderId&quot;:&quot;9917766749868012221&quot;,&quot;orderDate&quot;:&quot;2026-04-20 16:49:46&quot;,&quot;orderTotalMoney&quot;:&quot;233&quot;,&quot;orderPaidMoney&quot;:&quot;0&quot;,&quot;orderRealMoney&quot;:&quot;233&quot;,&quot;buyerName&quot;:&quot;寄东西&quot;,&quot;buyerPhone&quot;:&quot;183****8863&quot;,&quot;deliveryAddress&quot;:&quot;北京市东城区U盾嘟嘟几点\n&quot;,&quot;deliveryDate&quot;:&quot;2026-03-02&quot;,&quot;accumulateRefundPrice&quot;:&quot;0&quot;,&quot;accumulateRefundCount&quot;:null,&quot;orderSource&quot;:12,&quot;paymentInfoList&quot;:[],&quot;wmsStatus&quot;:null,&quot;goodsInfoList&quot;:[{&quot;goodsPic&quot;:&quot;https://osscdnuat.jrdaimao.com/file/easyhome-web-business/1767604421901231_750x750.jpg&quot;,&quot;spuName&quot;:&quot;我要看看同步供应链的商品的&quot;,&quot;skuName&quot;:&quot;1000cm*9000ml+湖水秘鲁色惨玛瑙红+长的像蟑螂但是却又不像+我说是保修1年不知道行不行300块&quot;,&quot;goodsNum&quot;:1,&quot;goodsPrice&quot;:&quot;233&quot;,&quot;goodsPriceDecimal&quot;:null,&quot;totalPrice&quot;:&quot;233&quot;,&quot;realityPrice&quot;:&quot;0&quot;,&quot;refundedMoney&quot;:&quot;0&quot;,&quot;goodsId&quot;:&quot;11680833085720657.92&quot;,&quot;pictureRenderData&quot;:null,&quot;orderGoodsDetailsId&quot;:&quot;1206128220685049856&quot;,&quot;orderGoodsInsurance&quot;:1}],&quot;cashierOrderRefundDetailVos&quot;:null,&quot;refundDetailsVO&quot;:null,&quot;orderRefundMarketingVO&quot;:{&quot;topicLabels&quot;:&quot;&quot;,&quot;marketingItemVOS&quot;:[],&quot;campaignVOList&quot;:[],&quot;campaignShareVOList&quot;:[],&quot;bigVVOList&quot;:[],&quot;easyMemberVoList&quot;:null,&quot;enjoyVipTip&quot;:null},&quot;orderGoodsInsuranceVO&quot;:null,&quot;goodsServiceVOS&quot;:null,&quot;electronContractVO&quot;:null,&quot;showRefundButton&quot;:null},&quot;message&quot;:&quot;操作成功&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-passed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 6</div>
+                            <h2>支付结果返回</h2>
+                            <div class="case-nodeid">testcases/test_order.py::TestOrder::test_order_business[case5]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>通过</strong></div>
+                            <div><span>耗时</span><strong>1.228 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/payment/cashPayment</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">1221 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/payment/cashPayment</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>1221 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;saas-jr&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2Njc0OTg1LCJleHAiOjE4MDgyMTA5ODV9.S2v9nnNu7jPHsgjZsuf0hzXP3Bjo7SFx8wsrGbVJBNrbXv06GNzkFpVJ8V_c8-Pbv9mR6eXd9YIFWTzzehfFmg&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;payMoney&quot;: &quot;233&quot;,
+  &quot;paymentWay&quot;: 10,
+  &quot;paySource&quot;: 2,
+  &quot;orderId&quot;: &quot;9917766749868012221&quot;
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:&quot;200&quot;,&quot;data&quot;:null,&quot;message&quot;:&quot;操作成功&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+        </div>
+    </body>
+    </html>
+    

@@ -1,0 +1,371 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>2026-0417-17:35test_login测试报告.html</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: #f5f7fb;
+                color: #1f2937;
+            }
+            .container {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 32px 20px 60px;
+            }
+            .hero {
+                background: linear-gradient(135deg, #0f172a, #1d4ed8);
+                color: #fff;
+                border-radius: 16px;
+                padding: 28px;
+                margin-bottom: 24px;
+            }
+            .hero h1 {
+                margin: 0 0 12px 0;
+                font-size: 30px;
+            }
+            .hero p {
+                margin: 0;
+                opacity: 0.9;
+            }
+            .summary {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(120px, 1fr));
+                gap: 12px;
+                margin: 24px 0;
+            }
+            .summary-card {
+                background: #fff;
+                border-radius: 12px;
+                padding: 16px;
+                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            }
+            .summary-card span {
+                display: block;
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+            .summary-card strong {
+                font-size: 28px;
+            }
+            .case-card {
+                background: #fff;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+                border-left: 6px solid #94a3b8;
+                overflow: hidden;
+            }
+            .status-passed { border-left-color: #16a34a; }
+            .status-failed { border-left-color: #dc2626; }
+            .status-skipped { border-left-color: #ca8a04; }
+            .status-error { border-left-color: #7c3aed; }
+            .case-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 20px;
+            }
+            .case-summary::-webkit-details-marker {
+                display: none;
+            }
+            .case-content {
+                padding: 0 20px 20px;
+            }
+            .case-header {
+                display: flex;
+                justify-content: space-between;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            .case-index {
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            .case-header h2 {
+                margin: 0 0 8px 0;
+                font-size: 24px;
+            }
+            .case-nodeid {
+                color: #94a3b8;
+                font-size: 12px;
+                word-break: break-all;
+            }
+            .case-meta {
+                min-width: 160px;
+                background: #f8fafc;
+                border-radius: 12px;
+                padding: 12px;
+            }
+            .case-meta div {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+            .case-meta div:last-child {
+                margin-bottom: 0;
+            }
+            .case-meta span {
+                color: #64748b;
+            }
+            .api-card {
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                margin-top: 14px;
+                background: #fcfdff;
+                overflow: hidden;
+            }
+            .api-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 16px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                align-items: center;
+                background: #f8fafc;
+            }
+            .api-summary::-webkit-details-marker {
+                display: none;
+            }
+            .api-content {
+                padding: 16px;
+                border-top: 1px solid #e2e8f0;
+            }
+            .api-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: #0f172a;
+                margin-right: auto;
+            }
+            .api-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 4px 10px;
+                border-radius: 999px;
+                background: #e2e8f0;
+                color: #334155;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            .kv {
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 6px 0;
+                border-bottom: 1px dashed #e2e8f0;
+            }
+            .kv span {
+                color: #64748b;
+            }
+            .section-title {
+                margin: 14px 0 8px;
+                font-weight: 700;
+                color: #334155;
+            }
+            pre {
+                margin: 0;
+                white-space: pre-wrap;
+                word-break: break-word;
+                background: #0f172a;
+                color: #e2e8f0;
+                padding: 14px;
+                border-radius: 10px;
+                overflow-x: auto;
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            .error-box {
+                margin-top: 12px;
+                background: #fff1f2;
+                border: 1px solid #fecdd3;
+                border-radius: 12px;
+                padding: 14px;
+            }
+            .empty {
+                padding: 16px;
+                color: #64748b;
+                background: #f8fafc;
+                border-radius: 12px;
+                margin-top: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <h1>2026-0417-17:35test_login测试报告.html</h1>
+                <p>生成时间：2026-04-17 17:35:58</p>
+            </div>
+            <div class="summary">
+                <div class="summary-card"><span>总用例</span><strong>2</strong></div>
+                <div class="summary-card"><span>通过</span><strong>1</strong></div>
+                <div class="summary-card"><span>失败</span><strong>1</strong></div>
+                <div class="summary-card"><span>跳过</span><strong>0</strong></div>
+                <div class="summary-card"><span>异常</span><strong>0</strong></div>
+            </div>
+            
+            <details class="case-card status-passed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 1</div>
+                            <h2>正常账号密码登录</h2>
+                            <div class="case-nodeid">testcases/test_login.py::TestLogin::test_password_login[case0]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>通过</strong></div>
+                            <div><span>耗时</span><strong>0.16 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-app-application/smartApi/juranApp/login</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">151 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-app-application/smartApi/juranApp/login</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>151 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;areaCode&quot;: &quot;86&quot;,
+  &quot;phone&quot;: &quot;18350000000&quot;,
+  &quot;password&quot;: &quot;65a0ec385ca6a0c1e20d1f8270c28303&quot;,
+  &quot;sliderCode&quot;: &quot;&quot;,
+  &quot;signKey&quot;: &quot;f4c9f2e1256ac58852ff5d9ceea72b7a&quot;,
+  &quot;loginType&quot;: 2
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:&quot;200&quot;,&quot;data&quot;:{&quot;memberId&quot;:&quot;1188688503295262720&quot;,&quot;phone&quot;:&quot;18350000000&quot;,&quot;jwtToken&quot;:&quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NDE4NTU4LCJleHAiOjE4MDc5NTQ1NTh9.I799VT0TxmZpeNPm8sKf2kgC8gA4dEtlaUphwmV6o80cYI6h0pU0JQYSgIX_e-2TFZ8CZTufyjmbxyrAAjG-7w&quot;,&quot;nickName&quot;:&quot;183****0000&quot;,&quot;memberName&quot;:null,&quot;acFlag&quot;:0,&quot;acMemberId&quot;:null,&quot;shopGuideId&quot;:null,&quot;shopGuideName&quot;:null,&quot;shopGuidePhone&quot;:null,&quot;appMemberVO&quot;:{&quot;memberId&quot;:null,&quot;nickname&quot;:null,&quot;phone&quot;:null,&quot;referrerPhone&quot;:null,&quot;gender&quot;:null,&quot;birthday&quot;:null,&quot;avatar&quot;:null,&quot;unitType&quot;:null,&quot;likeStyle&quot;:null,&quot;decorationStatus&quot;:null,&quot;receiptAddress&quot;:null,&quot;type&quot;:1,&quot;shopManager&quot;:1,&quot;isInsuredUser&quot;:0,&quot;marketer&quot;:1,&quot;group&quot;:0,&quot;commonNumStyle&quot;:null,&quot;merchantId&quot;:&quot;557365943967428608&quot;,&quot;merchantName&quot;:&quot;北京京东世纪信息技术有限公司&quot;,&quot;account&quot;:&quot;18350000000&quot;,&quot;userName&quot;:&quot;jr-工作台自动化&quot;,&quot;marketManage&quot;:null,&quot;registeredCity&quot;:null,&quot;cardFlag&quot;:null,&quot;bigVuDescription&quot;:null,&quot;cardTypeName&quot;:null,&quot;cardType&quot;:null,&quot;cardName&quot;:null,&quot;cardLevel&quot;:null,&quot;expireTime&quot;:null,&quot;cardDescription&quot;:null,&quot;brandManager&quot;:null,&quot;personaLabels&quot;:null,&quot;decorateStyle&quot;:null,&quot;decorateStage&quot;:null,&quot;cardDiscountDesc&quot;:null,&quot;opsUserName&quot;:null,&quot;opsUserId&quot;:null,&quot;roleName&quot;:null,&quot;operationPermission&quot;:null,&quot;externalUserToken&quot;:null,&quot;money&quot;:null,&quot;goodsNum&quot;:null,&quot;shopNum&quot;:null,&quot;couponNum&quot;:null,&quot;conserveDescription&quot;:null,&quot;integral&quot;:null,&quot;expansionGoldEntryState&quot;:null,&quot;totalAssets&quot;:null,&quot;dealerManager&quot;:null,&quot;hasMinBBasicPermissions&quot;:true,&quot;hasMerchantBoard&quot;:true,&quot;hasMarketServicePermissions&quot;:null,&quot;marketServiceUrl&quot;:null,&quot;juranAppLogin&quot;:1}},&quot;message&quot;:&quot;操作成功&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+            <details class="case-card status-failed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 2</div>
+                            <h2>手机号错误</h2>
+                            <div class="case-nodeid">testcases/test_login.py::TestLogin::test_password_login[case1]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>失败</strong></div>
+                            <div><span>耗时</span><strong>0.053 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>self = &lt;testcases.test_login.TestLogin object at 0x10554b050&gt;
+http_client = &lt;common.request_util.HttpClient object at 0x105565fd0&gt;
+case = {&#x27;body&#x27;: {&#x27;areaCode&#x27;: &#x27;86&#x27;, &#x27;loginType&#x27;: 2, &#x27;password&#x27;: &#x27;88888888&#x27;, &#x27;phone&#x27;: &#x27;18888888&#x27;, ...}, &#x27;expected_business_codes&#x27;: [0, 200], &#x27;expected_keys&#x27;: [&#x27;code&#x27;], &#x27;expected_status_code&#x27;: 200, ...}
+
+    @allure.story(&quot;手机号密码登录&quot;)
+    @allure.title(&quot;我是测试用例标题&quot;)
+    @pytest.mark.login
+    @pytest.mark.smoke
+    @pytest.mark.parametrize(&quot;case&quot;, case_data)
+    def test_password_login(self, http_client, case):
+        with allure.step(f&quot;执行用例: {case[&#x27;title&#x27;]}&quot;):
+            response = http_client.send(
+                method=case[&quot;method&quot;],
+                url=LOGIN_BY_PASSWORD,
+                json=case[&quot;body&quot;],
+            )
+    
+        with allure.step(&quot;断言响应并提取公共变量&quot;):
+&gt;           response_json = validate_and_extract(response, case)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_login.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:14: in validate_response
+    assert_business_success(response_json, case.get(&quot;expected_business_codes&quot;))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response_json = {&#x27;code&#x27;: &#x27;30064&#x27;, &#x27;data&#x27;: None, &#x27;message&#x27;: &#x27;输入有误，请核对信息&#x27;, &#x27;success&#x27;: False}
+expected_codes = [0, 200]
+
+    def assert_business_success(response_json, expected_codes=None):
+        &quot;&quot;&quot;
+        兼容常见业务成功字段，避免不同项目返回结构不一致时难维护。
+        expected_codes 不传时，如果没有明确业务成功标准，则不强制失败。
+        &quot;&quot;&quot;
+        if not isinstance(response_json, dict):
+            return
+    
+        if &quot;success&quot; in response_json:
+&gt;           assert response_json[&quot;success&quot;] is True, f&quot;业务断言失败：{response_json}&quot;
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 业务断言失败：{&#x27;code&#x27;: &#x27;30064&#x27;, &#x27;message&#x27;: &#x27;输入有误，请核对信息&#x27;, &#x27;data&#x27;: None, &#x27;success&#x27;: False}
+
+../common/assert_util.py:24: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-app-application/smartApi/juranApp/login</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">48 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-app-application/smartApi/juranApp/login</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>48 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NDE4NTU4LCJleHAiOjE4MDc5NTQ1NTh9.I799VT0TxmZpeNPm8sKf2kgC8gA4dEtlaUphwmV6o80cYI6h0pU0JQYSgIX_e-2TFZ8CZTufyjmbxyrAAjG-7w&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;areaCode&quot;: &quot;86&quot;,
+  &quot;phone&quot;: &quot;18888888&quot;,
+  &quot;password&quot;: &quot;88888888&quot;,
+  &quot;sliderCode&quot;: &quot;&quot;,
+  &quot;signKey&quot;: &quot;f4c9f2e1256ac58852ff5d9ceea72b7a&quot;,
+  &quot;loginType&quot;: 2
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:&quot;30064&quot;,&quot;message&quot;:&quot;输入有误，请核对信息&quot;,&quot;data&quot;:null,&quot;success&quot;:false}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+        </div>
+    </body>
+    </html>
+    

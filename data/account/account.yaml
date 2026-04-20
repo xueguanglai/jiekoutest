@@ -1,0 +1,39 @@
+order_user:
+  title: 订单模块账号
+  areaCode: "86"
+  phone: "18350000000"
+  password: "65a0ec385ca6a0c1e20d1f8270c28303"
+  sliderCode: ""
+  signKey: "f4c9f2e1256ac58852ff5d9ceea72b7a"
+  loginType: 2
+
+product_user:
+  title: 商品模块账号
+  areaCode: "86"
+  phone: "请替换成商品模块账号"
+  password: "请替换成商品模块密码"
+  sliderCode: ""
+  signKey: "f4c9f2e1256ac58852ff5d9ceea72b7a"
+  loginType: 2
+
+refund_user:
+  title: 售后模块账号
+  areaCode: "86"
+  phone: "请替换成售后模块账号"
+  password: "请替换成售后模块密码"
+  sliderCode: ""
+  signKey: "f4c9f2e1256ac58852ff5d9ceea72b7a"
+  loginType: 2
+
+ceshi_user:
+  title: 测试账号ASD11111
+  a: "接口入场的key 和value"
+  b: "都是接口的入场内容"
+
+
+gongyingshang_usr:
+  title: 供应商UAT-OM端账号
+  areaCode: "86"
+  phone: "18350000000"
+  password: "65a0ec385ca6a0c1e20d1f8270c28303"
+  loginTarget: "operation"

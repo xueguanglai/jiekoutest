@@ -1,0 +1,321 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>2026-0420-16:06test_gongyingshang测试报告.html</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: #f5f7fb;
+                color: #1f2937;
+            }
+            .container {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 32px 20px 60px;
+            }
+            .hero {
+                background: linear-gradient(135deg, #0f172a, #1d4ed8);
+                color: #fff;
+                border-radius: 16px;
+                padding: 28px;
+                margin-bottom: 24px;
+            }
+            .hero h1 {
+                margin: 0 0 12px 0;
+                font-size: 30px;
+            }
+            .hero p {
+                margin: 0;
+                opacity: 0.9;
+            }
+            .summary {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(120px, 1fr));
+                gap: 12px;
+                margin: 24px 0;
+            }
+            .summary-card {
+                background: #fff;
+                border-radius: 12px;
+                padding: 16px;
+                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            }
+            .summary-card span {
+                display: block;
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+            .summary-card strong {
+                font-size: 28px;
+            }
+            .case-card {
+                background: #fff;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+                border-left: 6px solid #94a3b8;
+                overflow: hidden;
+            }
+            .status-passed { border-left-color: #16a34a; }
+            .status-failed { border-left-color: #dc2626; }
+            .status-skipped { border-left-color: #ca8a04; }
+            .status-error { border-left-color: #7c3aed; }
+            .case-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 20px;
+            }
+            .case-summary::-webkit-details-marker {
+                display: none;
+            }
+            .case-content {
+                padding: 0 20px 20px;
+            }
+            .case-header {
+                display: flex;
+                justify-content: space-between;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            .case-index {
+                color: #64748b;
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            .case-header h2 {
+                margin: 0 0 8px 0;
+                font-size: 24px;
+            }
+            .case-nodeid {
+                color: #94a3b8;
+                font-size: 12px;
+                word-break: break-all;
+            }
+            .case-meta {
+                min-width: 160px;
+                background: #f8fafc;
+                border-radius: 12px;
+                padding: 12px;
+            }
+            .case-meta div {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+            .case-meta div:last-child {
+                margin-bottom: 0;
+            }
+            .case-meta span {
+                color: #64748b;
+            }
+            .api-card {
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                margin-top: 14px;
+                background: #fcfdff;
+                overflow: hidden;
+            }
+            .api-summary {
+                list-style: none;
+                cursor: pointer;
+                padding: 16px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                align-items: center;
+                background: #f8fafc;
+            }
+            .api-summary::-webkit-details-marker {
+                display: none;
+            }
+            .api-content {
+                padding: 16px;
+                border-top: 1px solid #e2e8f0;
+            }
+            .api-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: #0f172a;
+                margin-right: auto;
+            }
+            .api-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 4px 10px;
+                border-radius: 999px;
+                background: #e2e8f0;
+                color: #334155;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            .kv {
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 6px 0;
+                border-bottom: 1px dashed #e2e8f0;
+            }
+            .kv span {
+                color: #64748b;
+            }
+            .section-title {
+                margin: 14px 0 8px;
+                font-weight: 700;
+                color: #334155;
+            }
+            pre {
+                margin: 0;
+                white-space: pre-wrap;
+                word-break: break-word;
+                background: #0f172a;
+                color: #e2e8f0;
+                padding: 14px;
+                border-radius: 10px;
+                overflow-x: auto;
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            .error-box {
+                margin-top: 12px;
+                background: #fff1f2;
+                border: 1px solid #fecdd3;
+                border-radius: 12px;
+                padding: 14px;
+            }
+            .empty {
+                padding: 16px;
+                color: #64748b;
+                background: #f8fafc;
+                border-radius: 12px;
+                margin-top: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <h1>2026-0420-16:06test_gongyingshang测试报告.html</h1>
+                <p>生成时间：2026-04-20 16:06:35</p>
+            </div>
+            <div class="summary">
+                <div class="summary-card"><span>总用例</span><strong>1</strong></div>
+                <div class="summary-card"><span>通过</span><strong>0</strong></div>
+                <div class="summary-card"><span>失败</span><strong>1</strong></div>
+                <div class="summary-card"><span>跳过</span><strong>0</strong></div>
+                <div class="summary-card"><span>异常</span><strong>0</strong></div>
+            </div>
+            
+            <details class="case-card status-failed">
+                <summary class="case-summary">
+                    <div class="case-header">
+                        <div>
+                            <div class="case-index">用例 1</div>
+                            <h2>供应商管理查询</h2>
+                            <div class="case-nodeid">testcases/test_gongyingshang.py::TestOrder::test_order_business[case0]</div>
+                        </div>
+                        <div class="case-meta">
+                            <div><span>结果</span><strong>失败</strong></div>
+                            <div><span>耗时</span><strong>0.018 s</strong></div>
+                        </div>
+                    </div>
+                </summary>
+                <div class="case-content">
+                    
+            <div class="error-box">
+                <div class="section-title">失败信息</div>
+                <pre>self = &lt;testcases.test_gongyingshang.TestOrder object at 0x103b0f2c0&gt;
+http_client = &lt;common.request_util.HttpClient object at 0x1047cdfa0&gt;
+order_login_token = &#x27;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyMzk1LCJleHAiOjE4MDgyMDgzOTV9.Ejg6OjaxgyeCbREohgT-rrzDnboK-o3_X1QKqi-Lo6vDvZZHP1D1AUwcqjDkfXGxdBKTTbV9O5o8ZUXSHonlow&#x27;
+case = {&#x27;body&#x27;: {&#x27;page&#x27;: 1, &#x27;pageSize&#x27;: 10}, &#x27;expected_business_codes&#x27;: [0, 200], &#x27;expected_keys&#x27;: [&#x27;code&#x27;], &#x27;expected_status_code&#x27;: 200, ...}
+
+    @allure.story(&quot;供应商相关接口&quot;)
+    @pytest.mark.parametrize(&quot;case&quot;, case_data)
+    def test_order_business(self, http_client, order_login_token, case):
+        if case.get(&quot;skip&quot;):
+            pytest.skip(case.get(&quot;skip_reason&quot;, &quot;当前示例仅作为模板&quot;))
+    
+        response = http_client.send(
+            method=case[&quot;method&quot;],
+            url=case[&quot;url&quot;],
+            headers=case.get(&quot;headers&quot;, {}),
+            json=case[&quot;body&quot;],
+        )
+&gt;       validate_and_extract(response, case)
+
+test_gongyingshang.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/response_util.py:28: in validate_and_extract
+    response_json = validate_response(response, case)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../common/response_util.py:14: in validate_response
+    assert_business_success(response_json, case.get(&quot;expected_business_codes&quot;))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response_json = {&#x27;code&#x27;: 401, &#x27;message&#x27;: &#x27;用户认证失败，请重新登录&#x27;}
+expected_codes = [0, 200]
+
+    def assert_business_success(response_json, expected_codes=None):
+        &quot;&quot;&quot;
+        兼容常见业务成功字段，避免不同项目返回结构不一致时难维护。
+        expected_codes 不传时，如果没有明确业务成功标准，则不强制失败。
+        &quot;&quot;&quot;
+        if not isinstance(response_json, dict):
+            return
+    
+        if &quot;success&quot; in response_json:
+            assert response_json[&quot;success&quot;] is True, f&quot;业务断言失败：{response_json}&quot;
+            return
+    
+        if &quot;code&quot; in response_json and expected_codes:
+            expected_code_set = {str(code) for code in expected_codes}
+&gt;           assert str(response_json[&quot;code&quot;]) in expected_code_set, (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f&quot;业务断言失败：{response_json}&quot;
+            )
+E           AssertionError: 业务断言失败：{&#x27;code&#x27;: 401, &#x27;message&#x27;: &#x27;用户认证失败，请重新登录&#x27;}
+
+../common/assert_util.py:29: AssertionError</pre>
+            </div>
+            
+                    <div class="api-list">
+                        
+                <details class="api-card">
+                    <summary class="api-summary">
+                        <span class="api-title">https://gatewayuat.jrdaimao.com/easyhome-ops-web-application/supplier/userList</span>
+                        <span class="api-badge">POST</span>
+                        <span class="api-badge">状态 200</span>
+                        <span class="api-badge">13 ms</span>
+                    </summary>
+                    <div class="api-content">
+                        <div class="kv"><span>请求方式</span><strong>POST</strong></div>
+                        <div class="kv"><span>请求地址</span><strong>https://gatewayuat.jrdaimao.com/easyhome-ops-web-application/supplier/userList</strong></div>
+                        <div class="kv"><span>请求状态</span><strong>200</strong></div>
+                        <div class="kv"><span>响应耗时</span><strong>13 ms</strong></div>
+                        <div class="section-title">请求头</div>
+                        <pre>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;,
+  &quot;platform&quot;: &quot;operation&quot;,
+  &quot;Authorization&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NjcyMzk1LCJleHAiOjE4MDgyMDgzOTV9.Ejg6OjaxgyeCbREohgT-rrzDnboK-o3_X1QKqi-Lo6vDvZZHP1D1AUwcqjDkfXGxdBKTTbV9O5o8ZUXSHonlow&quot;
+}</pre>
+                        <div class="section-title">请求体</div>
+                        <pre>{
+  &quot;page&quot;: 1,
+  &quot;pageSize&quot;: 10
+}</pre>
+                        <div class="section-title">响应结果</div>
+                        <pre>{&quot;code&quot;:401,&quot;message&quot;:&quot;用户认证失败，请重新登录&quot;}</pre>
+                    </div>
+                </details>
+                
+                    </div>
+                </div>
+            </details>
+            
+        </div>
+    </body>
+    </html>
+    

@@ -1,0 +1,8 @@
+project_name: 电商接口自动化测试框架
+tester: qa
+timeout: 10
+token_header_name: Authorization
+token_prefix: ""
+dingtalk_webhook: "https://oapi.dingtalk.com/robot/send?access_token=1454382d23f2c6aaae249d0fa2ecc2ab44082c594a72a6ed13cd5b165c2756f1"
+dingtalk_keyword: "图片推送"
+dingtalk_image_url: ""

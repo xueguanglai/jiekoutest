@@ -1,0 +1,12 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/orderCenter/queryDetail
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json', 'platform': 'saas-jr', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NDE4ODAzLCJleHAiOjE4MDc5NTQ4MDN9.6oLwMY4Y9ilNAWPh5-UXhtRIQw5smwB0kt7CzgLgrKpMPDwDzqYC649KO78U-ZaFXyHcvysGyafhn6uZTMDnPA'}
+INFO     api-test:request_util.py:48 请求体: {
+  "orderId": "9917764188038083862",
+  "searchType": "paymentDetailManager",
+  "orderType": 1,
+  "marketId": "561863468761264128"
+}
+INFO     api-test:request_util.py:89 响应状态码: 200
+INFO     api-test:request_util.py:90 响应耗时(ms): 156
+INFO     api-test:request_util.py:91 响应内容: {"code":"200","data":{"orderChildIds":[],"orderStatus":"1","cashierOrderStatus":1,"boothCode":"1001-5-B-88888888","boothName":"家饰雅兰--唯一推AC勿动","brandName":"雅兰窗帘,家饰雅兰,兴兴uat品牌2,兴兴uat品牌1品牌名字加长还能加长呢呀,九牧,共禾京品,洞心,兴兴推送rem品牌哈,喜临门,沃伦门窗","orderId":"9917764188038083862","orderDate":"2026-04-17 17:40:03","orderTotalMoney":"233","orderPaidMoney":"0","orderRealMoney":"233","buyerName":"寄东西","buyerPhone":"183****8863","deliveryAddress":"北京市东城区U盾嘟嘟几点\n","deliveryDate":"2026-03-02","accumulateRefundPrice":"0","accumulateRefundCount":null,"orderSource":12,"paymentInfoList":[],"wmsStatus":null,"goodsInfoList":[{"goodsPic":"https://osscdnuat.jrdaimao.com/file/easyhome-web-business/1767604421901231_750x750.jpg","spuName":"我要看看同步供应链的商品的","skuName":"1000cm*9000ml+湖水秘鲁色惨玛瑙红+长的像蟑螂但是却又不像+我说是保修1年不知道行不行300块","goodsNum":1,"goodsPrice":"233","goodsPriceDecimal":null,"totalPrice":"233","realityPrice":"0","refundedMoney":"0","goodsId":"11680833085720657.92","pictureRenderData":null,"orderGoodsDetailsId":"1205053711072657408","orderGoodsInsurance":1}],"cashierOrderRefundDetailVos":null,"refundDetailsVO":null,"orderRefundMarketingVO":{"topicLabels":"","marketingItemVOS":[],"campaignVOList":[],"campaignShareVOList":[],"bigVVOList":[],"easyMemberVoList":null,"enjoyVipTip":null},"orderGoodsInsuranceVO":null,"goodsServiceVOS":null,"electronContractVO":null,"showRefundButton":null},"message":"操作成功"}

@@ -1,0 +1,42 @@
+- title: 正常账号密码登录
+  method: post
+  url: /smartApi/juranApp/login
+  body:
+    areaCode: "86"
+    phone: "18350000000"
+    password: "65a0ec385ca6a0c1e20d1f8270c28303"
+    sliderCode: ""
+    signKey: "f4c9f2e1256ac58852ff5d9ceea72b7a"
+    loginType: 2
+  expected_status_code: 200
+  expected_business_codes:
+    - 200
+  expected_keys:
+    - code
+    - data
+    - data.jwtToken
+    - data.memberId
+  extract:
+    jwtToken: data.jwtToken
+    memberId: data.memberId
+    phone: data.phone
+
+- title: 手机号错误
+  method: post
+  url: /smartApi/juranApp/login
+  body:
+    areaCode: "86"
+    phone: "18888888"
+    password: "88888888"
+    sliderCode: ""
+    signKey: "f4c9f2e1256ac58852ff5d9ceea72b7a"
+    loginType: 2
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - code
+  extract:
+    token: data.token
+    userId: data.userId

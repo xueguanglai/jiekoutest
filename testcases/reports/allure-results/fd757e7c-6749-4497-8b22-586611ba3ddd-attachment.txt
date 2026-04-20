@@ -1,0 +1,14 @@
+INFO     api-test:request_util.py:43 请求地址: https://gatewayuat.jrdaimao.com/easyhome-app-application/smartApi/juranApp/login
+INFO     api-test:request_util.py:44 请求方式: POST
+INFO     api-test:request_util.py:45 请求头: {'Content-Type': 'application/json'}
+INFO     api-test:request_util.py:48 请求体: {
+  "areaCode": "86",
+  "phone": "18350000000",
+  "password": "65a0ec385ca6a0c1e20d1f8270c28303",
+  "sliderCode": "",
+  "signKey": "f4c9f2e1256ac58852ff5d9ceea72b7a",
+  "loginType": 2
+}
+INFO     api-test:request_util.py:89 响应状态码: 200
+INFO     api-test:request_util.py:90 响应耗时(ms): 131
+INFO     api-test:request_util.py:91 响应内容: {"code":"200","data":{"memberId":"1188688503295262720","phone":"18350000000","jwtToken":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc2NDE1ODE1LCJleHAiOjE4MDc5NTE4MTV9.bySYuFsqe4XyL5wPDL6MORb0F8_3P9qRu2MolELYAqlGEPer_LcS53yIwqYjCh1-MjjaF8oyo6ER5OvEQQSrWQ","nickName":"183****0000","memberName":null,"acFlag":0,"acMemberId":null,"shopGuideId":null,"shopGuideName":null,"shopGuidePhone":null,"appMemberVO":{"memberId":null,"nickname":null,"phone":null,"referrerPhone":null,"gender":null,"birthday":null,"avatar":null,"unitType":null,"likeStyle":null,"decorationStatus":null,"receiptAddress":null,"type":1,"shopManager":1,"isInsuredUser":0,"marketer":1,"group":0,"commonNumStyle":null,"merchantId":"557365943967428608","merchantName":"北京京东世纪信息技术有限公司","account":"18350000000","userName":"jr-工作台自动化","marketManage":null,"registeredCity":null,"cardFlag":null,"bigVuDescription":null,"cardTypeName":null,"cardType":null,"cardName":null,"cardLevel":null,"expireTime":null,"cardDescription":null,"brandManager":null,"personaLabels":null,"decorateStyle":null,"decorateStage":null,"cardDiscountDesc":null,"opsUserName":null,"opsUserId":null,"roleName":null,"operationPermission":null,"externalUserToken":null,"money":null,"goodsNum":null,"shopNum":null,"couponNum":null,"conserveDescription":null,"integral":null,"expansionGoldEntryState":null,"totalAssets":null,"dealerManager":null,"hasMinBBasicPermissions":true,"hasMerchantBoard":true,"hasMarketServicePermissions":null,"marketServiceUrl":null,"juranAppLogin":1}},"message":"操作成功"}

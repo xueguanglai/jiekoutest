@@ -1,0 +1,12 @@
+INFO     api-test:request_util.py:48 请求地址: https://gatewayuat.jrdaimao.com/easyhome-app-application/saas/payment/cashPayment
+INFO     api-test:request_util.py:49 请求方式: POST
+INFO     api-test:request_util.py:50 请求头: {'Content-Type': 'application/json', 'platform': 'saas-jr', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc0NDk0MTgxLCJleHAiOjE4MDYwMzAxODF9.OPvrwgxx5bOmVvIw8nhTzN42t5tLnESmJ0G8noYjdRMGDo1_tT9oGtlBWofkm1hdhjlmnT1oHFL5rEJKEll2Ww', 'jwtToken': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTg4Njg4NTAzMjk1MjYyNzIwIiwiaWF0IjoxNzc0NDk0MTgxLCJleHAiOjE4MDYwMzAxODF9.OPvrwgxx5bOmVvIw8nhTzN42t5tLnESmJ0G8noYjdRMGDo1_tT9oGtlBWofkm1hdhjlmnT1oHFL5rEJKEll2Ww'}
+INFO     api-test:request_util.py:53 请求体: {
+  "payMoney": "233",
+  "paymentWay": 10,
+  "paySource": 2,
+  "orderId": "9917744941822094651"
+}
+INFO     api-test:request_util.py:82 响应状态码: 200
+INFO     api-test:request_util.py:83 响应耗时(ms): 416
+INFO     api-test:request_util.py:84 响应内容: {"code":"200","data":null,"message":"操作成功"}

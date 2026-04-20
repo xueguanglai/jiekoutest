@@ -1,0 +1,26 @@
+- title: 商品列表查询示例
+  method: post
+  url: /api/product/list
+  body:
+    pageNum: 1
+    pageSize: 10
+    keyword: "手机"
+  expected_status_code: 200
+  expected_business_codes:
+    - 0
+    - 200
+  expected_keys:
+    - data
+  skip: true
+  skip_reason: 需要替换成真实商品接口后再执行
+
+- title: 商品管理列表页
+  method: post
+  url: /easyhome-ops-web-application/goods/listGoodsPage
+  body:
+    page: 1
+    pageSize: 10
+    cityStationIds: ["824358401244008409"]
+    categoryId: null
+    manageLabel: null
+    id: "3722687"
