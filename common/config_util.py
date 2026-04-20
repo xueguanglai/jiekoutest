@@ -1,5 +1,8 @@
+from datetime import datetime
+
 from common.path_util import CONFIG_DIR
 from common.yaml_util import read_yaml
+import time
 
 
 CURRENT_ENV = "uat"
@@ -35,4 +38,11 @@ def get_project_config():
     return read_yaml(CONFIG_DIR / "project.yaml")
 
 
+def get_time_out():
+    return datetime.now().strftime("%Y-%m-%d  %H:%M:%S")
 
+
+
+
+timenow = get_time_out()
+print(timenow)
