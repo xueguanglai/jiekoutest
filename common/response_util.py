@@ -1,26 +1,26 @@
 from common.assert_util import (
-    assert_business_success,
+    assert_business_code,
     assert_contains_keys,
     assert_json_value,
     assert_response_is_json,
     assert_status_code,
 )
 from common.extract_util import extract_to_context
+from common.replace_util import replace_data
+
+
 def validate_response(response, case):
-    assert_status_code(response, case["expected_status_code"])
+    assert_status_code(response, case.get("expected_status_code", 200))
     assert_response_is_json(response)
 
     response_json = response.json()
-    assert_business_success(response_json, case.get("expected_business_codes"))
+    assert_business_code(response_json, case.get("expected_business_codes"))
 
-    expected_values = case.get("expected_values", {})
+    expected_values = replace_data(case.get("expected_values") or {})
     for key_path, expected_value in expected_values.items():
         assert_json_value(response_json, key_path, expected_value)
 
-    expected_keys = case.get("expected_keys", [])
-    if expected_keys:
-        assert_contains_keys(response_json, expected_keys)
-
+    assert_contains_keys(response_json, case.get("expected_keys") or [])
     return response_json
 
 

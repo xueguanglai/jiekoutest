@@ -1,3 +1,18 @@
-base_url: https://gatewayuat.jrdaimao.com/easyhome-app-application
+base_url: https://gatewayuat.wolaicaipay.com
 headers:
   Content-Type: application/json
+  platform: operation
+  clienttype: wlc-manage
+login:
+  # 请求体取自 data/account/uat.yaml 中对应角色的 body
+  url: /wlc-service/smartApi/user/accountLogin?debug=debug
+  method: post
+  expected_status_code: 200
+  success_codes:
+    - 200
+  # token 在登录响应中的路径，值形如 "Bearer xxx"
+  token_path: data.jwtToken
+  # 登录态通过 Cookie 携带：固定 Cookie + eh_uatJwtToken=<URL 编码后的 token>
+  token_header: Cookie
+  token_urlencode: true
+  token_format: "_tell=13500000000; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221127393492067196928%22%2C%22first_id%22%3A%2219ef79fc115880-0fb425ed097b42-26061051-3686400-19ef79fc1161ed6%22%2C%22props%22%3A%7B%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTllZjc5ZmMxMTU4ODAtMGZiNDI1ZWQwOTdiNDItMjYwNjEwNTEtMzY4NjQwMC0xOWVmNzlmYzExNjFlZDYiLCIkaWRlbnRpdHlfbG9naW5faWQiOiIxMTI3MzkzNDkyMDY3MTk2OTI4In0%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%221127393492067196928%22%7D%7D; eh_uatJwtToken={token}"

@@ -1,45 +1,38 @@
 import allure
 
-from api.login_api import LOGIN_BY_PASSWORD, build_password_login_body
-from common.response_util import validate_and_extract
+from common.account_util import get_account_by_role
+from common.auth_util import clear_token
+from common.config_util import get_current_env, get_login_config
+from common.extract_util import get_value_by_path
+from common.response_util import validate_response
 
 
-def login_by_password(
-    http_client,
-    phone,
-    password,
-    area_code="86",
-    slider_code="",
-    sign_key="f4c9f2e1256ac58852ff5d9ceea72b7a",
-    login_type=2,
-):
-    body = build_password_login_body(
-        phone=phone,
-        password=password,
-        area_code=area_code,
-        slider_code=slider_code,
-        sign_key=sign_key,
-        login_type=login_type,
-    )
-    case = {
-        "title": "登录获取 token",
-        "method": "post",
-        "url": LOGIN_BY_PASSWORD,
-        "body": body,
-        "expected_status_code": 200,
-        "expected_business_codes": ["200"],
-        "expected_keys": ["code", "data", "data.jwtToken", "data.memberId"],
-        "extract": {
-            "jwtToken": "data.jwtToken",
-            "memberId": "data.memberId",
-            "phone": "data.phone",
-        },
-    }
+def login(http_client, role_name):
+    """用 data/account/<env>.yaml 中该角色的 body 调登录接口，返回 token。"""
+    login_config = get_login_config()
+    if not login_config.get("url"):
+        raise ValueError(f"config/env/{get_current_env()}.yaml 中没有配置 login.url")
 
-    with allure.step("执行登录，获取后续业务需要的 token"):
+    account = get_account_by_role(role_name)
+    clear_token()
+    with allure.step(f"登录角色：{role_name}"):
         response = http_client.send(
-            method=case["method"],
-            url=case["url"],
-            json=case["body"],
+            method=login_config.get("method", "post"),
+            url=login_config["url"],
+            json=account["body"],
         )
-    return validate_and_extract(response, case)
+    response_json = validate_response(
+        response,
+        {
+            "expected_status_code": login_config.get("expected_status_code", 200),
+            "expected_business_codes": login_config.get("success_codes"),
+        },
+    )
+
+    token_path = login_config.get("token_path", "data.token")
+    try:
+        return get_value_by_path(response_json, token_path)
+    except KeyError as exc:
+        raise AssertionError(
+            f"登录成功但未取到 token，路径：{token_path}，实际响应：{response_json}"
+        ) from exc

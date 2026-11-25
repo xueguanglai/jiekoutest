@@ -1,48 +1,37 @@
-from datetime import datetime
-
 from common.path_util import CONFIG_DIR
 from common.yaml_util import read_yaml
-import time
 
 
-CURRENT_ENV = "uat"
-
-
-def set_current_env(env_name):
-    global CURRENT_ENV
-    CURRENT_ENV = env_name
-
-
-def get_current_env():
-    return CURRENT_ENV
-
-
-def get_env_config():
-    env_file = CONFIG_DIR / "env" / f"{CURRENT_ENV}.yaml"
-    return read_yaml(env_file)
-
-get_env_config()
-
-
-def get_base_url():
-    env_config = get_env_config()
-    return env_config["base_url"].rstrip("/")
-
-
-def get_default_headers():
-    env_config = get_env_config()
-    return env_config.get("headers", {})
+_current_env = None
 
 
 def get_project_config():
     return read_yaml(CONFIG_DIR / "project.yaml")
 
 
-def get_time_out():
-    return datetime.now().strftime("%Y-%m-%d  %H:%M:%S")
+def set_current_env(env_name):
+    global _current_env
+    _current_env = env_name
 
 
+def get_current_env():
+    return _current_env or get_project_config().get("default_env", "uat")
 
 
-timenow = get_time_out()
-print(timenow)
+def get_env_config():
+    env_file = CONFIG_DIR / "env" / f"{get_current_env()}.yaml"
+    if not env_file.exists():
+        raise FileNotFoundError(f"未找到环境配置文件：{env_file}")
+    return read_yaml(env_file)
+
+
+def get_base_url():
+    return get_env_config()["base_url"].rstrip("/")
+
+
+def get_default_headers():
+    return get_env_config().get("headers") or {}
+
+
+def get_login_config():
+    return get_env_config().get("login") or {}

@@ -1,5 +1,5 @@
 .pytest_cache/
 __pycache__/
-reports/allure-results/
-reports/allure-report/
 *.pyc
+.venv/
+reports/

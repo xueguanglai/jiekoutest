@@ -4,7 +4,7 @@ import allure
 import requests
 from requests import RequestException
 
-from common.auth_util import get_token
+from common.auth_util import build_auth_headers
 from common.config_util import get_base_url, get_default_headers, get_project_config
 from common.logger_util import get_logger
 from common.report_util import add_api_record
@@ -17,45 +17,38 @@ class HttpClient:
         # Local mock endpoints must bypass shell/system proxy settings.
         self.session.trust_env = False
         self.logger = get_logger()
-        project_config = get_project_config()
-        self.timeout = project_config.get("timeout", 10)
+        self.timeout = get_project_config().get("timeout", 10)
 
     def send(self, method, url, **kwargs):
+        url = replace_data(url)
         full_url = url if url.startswith("http") else f"{get_base_url()}{url}"
-        headers = get_default_headers().copy()
-        custom_headers = kwargs.pop("headers", {})
-        headers.update(custom_headers)
-        auto_token = get_token()
-        auth_header_name = get_project_config().get("token_header_name", "Authorization")
-        auth_prefix = get_project_config().get("token_prefix", "Bearer")
-        if auto_token and auth_header_name not in headers:
-            headers[auth_header_name] = (
-                f"{auth_prefix} {auto_token}".strip()
-                if auth_prefix
-                else auto_token
-            )
+        headers = {
+            **get_default_headers(),
+            **build_auth_headers(),
+            **replace_data(kwargs.pop("headers", None) or {}),
+        }
 
-        if "json" in kwargs:
-            kwargs["json"] = replace_data(kwargs["json"])
-        if "params" in kwargs:
-            kwargs["params"] = replace_data(kwargs["params"])
-        if "data" in kwargs:
-            kwargs["data"] = replace_data(kwargs["data"])
+        for key in ("json", "params", "data"):
+            if key in kwargs:
+                kwargs[key] = replace_data(kwargs[key])
+
+        request_body = json.dumps(
+            kwargs.get("json", kwargs.get("data", kwargs.get("params", {}))),
+            ensure_ascii=False,
+            indent=2,
+            default=str,
+        )
+        headers_text = json.dumps(headers, ensure_ascii=False, indent=2)
 
         self.logger.info("请求地址: %s", full_url)
         self.logger.info("请求方式: %s", method.upper())
         self.logger.info("请求头: %s", headers)
-
-        if "json" in kwargs:
-            self.logger.info(
-                "请求体: %s",
-                json.dumps(kwargs["json"], ensure_ascii=False, indent=2),
-            )
-            allure.attach(
-                json.dumps(kwargs["json"], ensure_ascii=False, indent=2),
-                name="request_body",
-                attachment_type=allure.attachment_type.JSON,
-            )
+        self.logger.info("请求参数: %s", request_body)
+        allure.attach(
+            request_body,
+            name="request_body",
+            attachment_type=allure.attachment_type.JSON,
+        )
 
         try:
             response = self.session.request(
@@ -77,8 +70,8 @@ class HttpClient:
                     "api_title": full_url,
                     "method": method.upper(),
                     "url": full_url,
-                    "headers": json.dumps(headers, ensure_ascii=False, indent=2),
-                    "request_body": json.dumps(kwargs.get("json", kwargs.get("data", {})), ensure_ascii=False, indent=2),
+                    "headers": headers_text,
+                    "request_body": request_body,
                     "response_body": str(exc),
                     "status_code": "request_error",
                     "elapsed_ms": "",
@@ -88,8 +81,9 @@ class HttpClient:
                 f"接口请求失败，请检查网络、域名、环境或代理配置。原始异常：{exc}"
             ) from exc
 
+        elapsed_ms = int(response.elapsed.total_seconds() * 1000)
         self.logger.info("响应状态码: %s", response.status_code)
-        self.logger.info("响应耗时(ms): %s", int(response.elapsed.total_seconds() * 1000))
+        self.logger.info("响应耗时(ms): %s", elapsed_ms)
         self.logger.info("响应内容: %s", response.text)
 
         allure.attach(
@@ -98,7 +92,7 @@ class HttpClient:
             attachment_type=allure.attachment_type.TEXT,
         )
         allure.attach(
-            f"{int(response.elapsed.total_seconds() * 1000)}",
+            f"{elapsed_ms}",
             name="elapsed_ms",
             attachment_type=allure.attachment_type.TEXT,
         )
@@ -112,11 +106,11 @@ class HttpClient:
                 "api_title": full_url,
                 "method": method.upper(),
                 "url": full_url,
-                "headers": json.dumps(headers, ensure_ascii=False, indent=2),
-                "request_body": json.dumps(kwargs.get("json", kwargs.get("data", {})), ensure_ascii=False, indent=2),
+                "headers": headers_text,
+                "request_body": request_body,
                 "response_body": response.text,
                 "status_code": response.status_code,
-                "elapsed_ms": int(response.elapsed.total_seconds() * 1000),
+                "elapsed_ms": elapsed_ms,
             }
         )
         return response

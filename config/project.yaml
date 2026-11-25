@@ -1,8 +1,19 @@
-project_name: 电商接口自动化测试框架
+project_name: 接口自动化测试框架
 tester: qa
+# 不传 --env 时使用的环境，对应 config/env/<env>.yaml
+default_env: uat
+# 单个请求超时时间（秒）
 timeout: 10
-token_header_name: Authorization
-token_prefix: ""
-dingtalk_webhook: "https://oapi.dingtalk.com/robot/send?access_token=1454382d23f2c6aaae249d0fa2ecc2ab44082c594a72a6ed13cd5b165c2756f1"
-dingtalk_keyword: "图片推送"
+# 响应里表示业务码的字段名，expected_business_codes 会校验它
+business_code_field: code
+# 钉钉通知：webhook 留空则不发送
+# dingtalk_notify_on_success 为 true 时全部通过也发送汇总，为 false 时只在有失败/异常用例时发送
+dingtalk_notify_on_success: true
+dingtalk_webhook: "https://oapi.dingtalk.com/robot/send?access_token=2e957536fb80528d332e8f45cda3e87d828b6e6ce64594e4713790baf2993f10"
+dingtalk_keyword: "今日新闻"
 dingtalk_image_url: ""
+# reports/ 下最多保留几份 HTML 报告，超出的旧报告在每次执行结束后自动删除
+report_keep_count: 3
+# 报告访问地址前缀，例如 http://10.0.0.1:8088；配置后钉钉里的报告是可点击链接（前缀/报告文件名）
+# 也可以用环境变量 REPORT_BASE_URL 设置（优先级更高），这样只在服务器上生效
+report_base_url: ""
