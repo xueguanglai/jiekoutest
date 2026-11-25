@@ -37,6 +37,16 @@ CSJKtest
 pip install -r requirements.txt
 ```
 
+### 2.1 本地 Mock 链路模板（不访问 UAT）
+
+```bash
+pytest testcases/test_mock_store_flow.py --env=mock
+```
+
+样例会在 pytest 进程内自动启动并关闭 mock API，无需单独启动服务。
+
+样例账号为 `demo / 123456`，商品 SKU 为 `SKU-1001`。数据只存在于 mock 服务进程内，重启服务即清空。可从 `api/mock_store_api.py`、`data/mock_store/mock_store_case.yaml` 和 `testcases/test_mock_store_flow.py` 复制结构新增接口。
+
 ### 2.2 执行全部用例
 
 ```bash

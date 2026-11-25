@@ -71,7 +71,7 @@ def build_custom_html_report(report_title, cases):
 
     case_blocks = []
     for index, case in enumerate(cases, start=1):
-        case_title = html.escape(case.get("title", f"用例{index}"))
+        case_title = html.escape(str(case.get("title") or f"用例{index}"))
         case_status = _status_text(case.get("status", ""))
         case_nodeid = html.escape(case.get("nodeid", ""))
         case_duration = html.escape(str(case.get("duration", "")))

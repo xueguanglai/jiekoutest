@@ -14,6 +14,8 @@ from common.replace_util import replace_data
 class HttpClient:
     def __init__(self):
         self.session = requests.Session()
+        # Local mock endpoints must bypass shell/system proxy settings.
+        self.session.trust_env = False
         self.logger = get_logger()
         project_config = get_project_config()
         self.timeout = project_config.get("timeout", 10)
